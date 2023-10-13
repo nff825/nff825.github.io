@@ -19,3 +19,5 @@ function fold(args, content) {
     + '\n</div></div>';
 }
 hexo.extend.tag.register('fold', fold, {ends: true});
+
+//   Usage: {% fold Title %} Something {% endfold %}
