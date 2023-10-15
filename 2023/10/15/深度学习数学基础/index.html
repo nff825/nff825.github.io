@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Tags: Markdown | NFF の小窝</title>
+    <title>深度学习数学基础 | NFF の小窝</title>
     <meta name="author" content="N FF" />
     <meta name="description" content="一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。" />
     <meta name="keywords" content="" />
@@ -32,6 +32,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -145,72 +149,132 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
+            <div class="article">
+    <div>
+        <h1>深度学习数学基础</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/15
+        </span>
         
-        
-        
-        <span>
-            <a href="/tags/Markdown/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+        <span class="category">
+            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Markdown
+                深度学习
             </a>
         </span>
         
         
-        
-        
-        
-        <span>
-            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%BC%A0%E9%87%8F/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                深度学习 张量
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%BC%A0%E9%87%8F/" style="color: #00bcd4">深度学习 张量</a>
+            </span>
+            
         </span>
-        
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/10/13</div>
-            <a href="/2023/10/13/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                <h3>Markdown学习笔记</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E7%BC%96%E8%BE%91/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        编辑
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/Markdown/" style="color: #03a9f4">Markdown</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h2 id="张量-tensor"><a href="#张量-tensor" class="headerlink" title="张量 (tensor)"></a>张量 (tensor)</h2><h4 id="0阶张量-标量-scalar"><a href="#0阶张量-标量-scalar" class="headerlink" title="0阶张量 (标量, scalar)"></a>0阶张量 (标量, scalar)</h4><blockquote>
+<p>x &#x3D; np.array(12)</p>
+</blockquote>
+<h4 id="1阶张量-向量-vector"><a href="#1阶张量-向量-vector" class="headerlink" title="1阶张量 (向量, vector)"></a>1阶张量 (向量, vector)</h4><blockquote>
+<p>x &#x3D; np.array([1, 2, 3, 4, 5])</p>
+</blockquote>
+<p>该张量有一个轴，该向量为5维向量</p>
+<h4 id="2阶张量-矩阵-matrix"><a href="#2阶张量-矩阵-matrix" class="headerlink" title="2阶张量 (矩阵, matrix)"></a>2阶张量 (矩阵, matrix)</h4><blockquote>
+<p>x &#x3D; np.array([[1, 2, 3, 4, 50],</p>
+<p>​                        [6, 7, 8, 9, 10],</p>
+<p>​                        [1, 2, 3, 4, 20])</p>
+</blockquote>
+<p>该张量有两个轴 (行和列)</p>
+<h4 id="3阶张量与更高阶的张量"><a href="#3阶张量与更高阶的张量" class="headerlink" title="3阶张量与更高阶的张量"></a>3阶张量与更高阶的张量</h4><blockquote>
+<p>x &#x3D; np.array([[[1, 2, 3, 10],</p>
+<p>​                         [2, 4, 6, 20]],</p>
+<p>​                        [[1, 3, 5, 10],</p>
+<p>​                         [2, 5, 8, 20]]])</p>
+</blockquote>
+<p>该3阶张量由两个矩阵组成，可以理解为数字组成的长方体</p>
+<h4 id="关键属性"><a href="#关键属性" class="headerlink" title="关键属性"></a>关键属性</h4><ol>
+<li><p>阶数 (轴的个数, ndim)</p>
+</li>
+<li><p>形状 (张量沿每个轴的维度大小或元素个数, shape)</p>
+<blockquote>
+<p>矩阵的形状为 (3, 5)</p>
+<p>向量的形状为 (5,)</p>
+<p>标量的形状为 ()</p>
+</blockquote>
+</li>
+<li><p>数据类型 (dtype)</p>
+</li>
+<li><p>以MNIST数据集为例：</p>
+<blockquote>
+<p>train_images.ndim &#x3D; 3</p>
+<p>train_images.shape &#x3D; (60000, 28, 28)</p>
+<p>train_images.dtype &#x3D; unit8  8位整数, 取值为0~255</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="操作张量"><a href="#操作张量" class="headerlink" title="操作张量"></a>操作张量</h4><p>张量切片 (tensor slicing)</p>
+<p><strong>沿着第一个轴操作张量</strong></p>
+<blockquote>
+<p>train_images[i]  第 i 张数字图像</p>
+<p>my_slice &#x3D; train_images[10:100]  选择第10~100 (不含100) 张数字图像，等同于</p>
+<blockquote>
+<p>my_slice &#x3D; train_images[10:100,  : ,  : ]</p>
+<p>my_slice &#x3D; train_images[10:100, 0:28, 0:28]</p>
+</blockquote>
+</blockquote>
+<p><strong>沿着第二个和第三个轴操作张量</strong></p>
+<blockquote>
+<p>my_slice &#x3D; train_images[ : , 14:, 14:]  所有图像的右下角14像素×14像素的区域</p>
+<p>my_slice &#x3D; train_images[ : , 7:-7, 7:-7]  所有图像中心的14像素×14像素的区域</p>
+</blockquote>
+<h4 id="数据批量"><a href="#数据批量" class="headerlink" title="数据批量"></a>数据批量</h4><p>张量的第一个轴 (轴0) 是样本轴 (sample axis)，深度学习模型将数据拆分为小批量后进行处理</p>
+<blockquote>
+<p>batch &#x3D; train_images[:128]  第0个批量</p>
+<p>batch &#x3D; train_images[128 * n:128 * (n + 1)]  第 n 个批量</p>
+<p>第一个轴 (轴0) 叫做批量轴 (batch axis)</p>
+</blockquote>
+<h4 id="现实世界中的数据张量实例"><a href="#现实世界中的数据张量实例" class="headerlink" title="现实世界中的数据张量实例"></a>现实世界中的数据张量实例</h4><ol>
+<li>向量数据：2阶张量，形状为 (samples, features)<ul>
+<li>每个样本是一个特征向量</li>
+</ul>
+</li>
+<li>时间序列数据：3阶张量，形状为 (samples, timesteps, features)<ul>
+<li>每个样本是特征向量组成的序列，序列长度为 timesteps</li>
+</ul>
+</li>
+<li>图像数据：4阶张量，形状为 (samples, height, width, channels)<ul>
+<li>每个样本是一个二维像素网格，每个像素由一个”通道” (channel) 向量表示</li>
+<li>一张灰度图像可以保存在一个2阶张量中</li>
+</ul>
+</li>
+<li>视频数据：5阶张量，形状为 (samples, frames, height, width, channels)<ul>
+<li>每个样本是都是由图像 (一帧) 组成的序列，序列长度 (每个视频帧的数量) 为 frames</li>
+</ul>
+</li>
+</ol>
+<h4 id="张量计算"><a href="#张量计算" class="headerlink" title="张量计算"></a>张量计算</h4>
     </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
@@ -243,6 +307,12 @@
     </div>
     <script src="/js/main.js"></script>
     <script src="/js/<file>"></script>
+    
+    
+
+
+
+
     
 </body>
 </html>
