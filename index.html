@@ -168,6 +168,100 @@
         
 
 <div class="post">
+    <a href="/2023/10/19/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96/">
+        <h2 class="post-title">深度学习——基于梯度的优化</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                深度学习
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/19
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="神经网络的“引擎”：基于梯度的优化"><a href="#神经网络的“引擎”：基于梯度的优化" class="headerlink" title="神经网络的“引擎”：基于梯度的优化"></a>神经网络的“引擎”：基于梯度的优化</h2><p>对于第一个模型示例，每个神经层都对输入数据进行如下变换：</p>
+<blockquote>
+<p>output &#x3D; relu(dot(input, W) + b)</p>
+</blockquote>
+<p>在这个表达式中，W 和 b 均为该层的属性，被称为该层的**权重 (weight) **或可训练参数 (trainable parameter)，分别对应属性 kernel 和  bias。这些权重包含模型从训练数据中学到的信息。</p>
+<p>一开始，这些权重矩阵取较小的随机值，这一步叫作**随机初始化 (random initialization)<strong>。下一步则是根据反馈信号逐步调节这些权重。这个逐步调节的过程叫作</strong>训练 (training)**，也就是机器学习中的“学习”过程。</p>
+<p>上述过程发生在一个训练循环 (training loop) 内，其具体流程如下。在一个循环中重复下列步骤，直到损失值变得足够小。</p>
+<p>​	(1) 抽取训练样本 x 和对应目标 y_true 组成的一个数据批量。</p>
+<p>​	(2) 在 x 上运行模型 (这一步叫作前向传播，forward pass)，得到预测值 y_pred。</p>
+<p>​	(3) 计算模型在这批数据上的损失值，用于衡量 y_pred 和 y_true 之间的差距。</p>
+<p>​	(4) 更新模型的所有权重，以略微减小模型在这批数据上的损失值。</p>
+<blockquote>
+<p>loss_value &#x3D; f(W)</p>
+<p>张量 grad(loss_value, W0) —— f 在 W0 点的导数，其形状与W相同</p>
+<p>每个元素 grad(loss_value, W0)[i, j] ——当 W0[i, j] 发生变化时 loss_value 变化的方向和大小</p>
+<p>张量 grad(loss_value, W0) ——函数 f(W) &#x3D; loss_value 在 W0 处的梯度，也叫作 “loss_value 相对于 W 在 W0 附近的梯度”</p>
+</blockquote>
+<p><strong>小批量随机梯度下降 (mini-batch stochastic gradient descent，小批量 SGD)</strong></p>
+<p>​	(1) 抽取训练样本 x 和对应目标 y_true 组成的一个数据批量</p>
+<p>​	(2) 在 x 上运行模型，得到预测值 y_pred，这一步叫作前向传播</p>
+<p>​	(3) 计算模型在这批数据上的损失值，用于衡量 y_pred 和 y_true 之间的差距</p>
+<p>​	(4) 计算损失相对于模型参数的梯度，这一步叫作<strong>反向传播 (backward pass)</strong></p>
+<p>​	(5) 将参数沿着梯度的反方向移动一小步，比如 W -&#x3D; learning_rate * gradient，从而使这批数据上的损失值减小一些，<strong>学习率 (learning_rate)</strong> 是一个调节梯度下降“速度”的标量因子</p>
+<p><strong>小批量 SGD 的变体</strong></p>
+<ol>
+<li>真 SGD (true SGD)：每次迭代只抽取一个样本和目标</li>
+<li>批量梯度下降 (batch gradient descent)：每次迭代都在所有数据上运行</li>
+<li>优化方法 (optimization method) 或优化器 (optimizer)：<ol>
+<li>带动量的 SGD、Adagrad、RMSprop 等</li>
+<li>它们的不同之处在于，计算下一次权重更新时还要考虑上一次权重更新，而不是仅考虑当前的梯度值</li>
+<li>动量解决了 SGD 的两个问题：收敛速度和局部极小值</li>
+</ol>
+</li>
+</ol>
+<p><strong>反向传播算法 (backpropagation algorithm)</strong></p>
+<p><strong>链式法则 (chain rule)</strong></p>
+<blockquote>
+<p>grad(y, x) &#x3D;&#x3D; grad(y, x1) * grad(x1, x)</p>
+</blockquote>
+<p><strong>用计算图 (computation graph) 进行自动微分</strong></p>
+<p><strong>TensorFlow 的梯度带</strong></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="color: #00a596">深度学习</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%A2%AF%E5%BA%A6/" style="color: #ffa2c4">梯度</a>
+        </span>
+        
+    </div>
+    <a href="/2023/10/19/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/10/15/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E8%8E%B7%E5%A5%96%E6%83%85%E5%86%B5/">
         <h2 class="post-title">历年毕业设计获奖情况</h2>
     </a>
@@ -573,7 +667,8 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h2 id="张量-tensor"><a href="#张量-tensor" class="headerlink" title="张量 (tensor)"></a>张量 (tensor)</h2><h4 id="0阶张量-标量-scalar"><a href="#0阶张量-标量-scalar" class="headerlink" title="0阶张量 (标量, scalar)"></a>0阶张量 (标量, scalar)</h4><blockquote>
+            <p>[TOC]</p>
+<h2 id="张量-tensor"><a href="#张量-tensor" class="headerlink" title="张量 (tensor)"></a>张量 (tensor)</h2><h4 id="0阶张量-标量-scalar"><a href="#0阶张量-标量-scalar" class="headerlink" title="0阶张量 (标量, scalar)"></a>0阶张量 (标量, scalar)</h4><blockquote>
 <p>x &#x3D; np.array(12)</p>
 </blockquote>
 <h4 id="1阶张量-向量-vector"><a href="#1阶张量-向量-vector" class="headerlink" title="1阶张量 (向量, vector)"></a>1阶张量 (向量, vector)</h4><blockquote>
@@ -653,7 +748,57 @@
 </ul>
 </li>
 </ol>
-<h4 id="张量计算"><a href="#张量计算" class="headerlink" title="张量计算"></a>张量计算</h4>
+<h4 id="张量计算"><a href="#张量计算" class="headerlink" title="张量计算"></a>张量计算</h4><p><strong>逐元素运算 (加法和 relu 运算)</strong></p>
+<blockquote>
+<p>import numpy as np</p>
+<p>z &#x3D; x + y  逐元素相加</p>
+<p>z &#x3D; np.maximum(z, 0.)  逐元素 relu</p>
+<p>z &#x3D; x * y  逐元素乘积</p>
+</blockquote>
+<p><strong>广播 (broadcast)</strong></p>
+<p>在没有歧义且可行的情况下，阶数较低的张量会被广播，以匹配阶数较高的*张量的形状。步骤如下：</p>
+<ol>
+<li>向小张量添加轴 (广播轴，broadcast axis)，使其 ndim 与大张量相同</li>
+<li>将小张量沿着广播轴重复，使其形状与大张量相同</li>
+</ol>
+<p><strong>张量积 (tensoor product) 或点积 (dot product)</strong></p>
+<ol>
+<li>向量-向量点积</li>
+</ol>
+<blockquote>
+<p>x &#x3D; np.random.random((32,))</p>
+<p>y &#x3D; np.random.random((32,))</p>
+<p>z &#x3D; np.dot(x, y)</p>
+<p>两个向量的点积是一个标量，只有元素个数相同的向量才能进行点积运算</p>
+</blockquote>
+<ol start="2">
+<li><p>矩阵-向量点积</p>
+<p>矩阵的第1维与向量的第0维必须相同，运算结果是一个向量，该向量的维数与矩阵第0维相同</p>
+<p>注意，只要两个张量中有一个的 ndim &gt; 1，则dot运算不对称，即 dot(x, y) !&#x3D; dot(y, x)</p>
+</li>
+<li><p>矩阵-矩阵点积</p>
+<p>对于矩阵x和y，当且仅当 x.shape[1] &#x3D;&#x3D; y.shape[0] 时，方可进行点积计算，点积结果为一形状为 (x.shape[0], y.shape[1])的矩阵，其元素是x的行与y的列之间的向量点积。</p>
+</li>
+<li><p>更高阶的张量点积运算</p>
+<blockquote>
+<p>(a, b, c, d) · (d,)  —-&gt;  (a, b, c)</p>
+<p>(a, b, c, d) · (d, e)  —-&gt;  (a, b, c, e)</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>张量变形 (tensor reshaping)</strong></p>
+<ul>
+<li>转置 (transpose)</li>
+</ul>
+<p><strong>张量运算的几何解释</strong></p>
+<ul>
+<li>加法：将物体沿着某个方向**平移 (translation) **一段距离</li>
+<li>与矩阵 R &#x3D; [[cos (theta), -sin (theta)], [sin (theta), cos (theta)]] 点积：逆时针<strong>旋转 (rotation)</strong>  θ 角</li>
+<li>与矩阵 R &#x3D; [[horizontal_factor, 0], [0, vertical_factor]] 点积：在水平和垂直方向上进行<strong>缩放 (scaling)</strong></li>
+<li>与任意矩阵点积：<strong>线性变换 (linear transform)</strong></li>
+<li>一次点积与一次加法 (线性变换+平移)：<strong>仿射变换 (affine transform)</strong></li>
+</ul>
+
             
         </div>
     </div>
@@ -667,7 +812,12 @@
         
         <span class="tag">
             
-            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%BC%A0%E9%87%8F/" style="color: #03a9f4">深度学习 张量</a>
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="color: #03a9f4">深度学习</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%BC%A0%E9%87%8F/" style="color: #ffa2c4">张量</a>
         </span>
         
     </div>
@@ -774,7 +924,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Markdown/" style="color: #03a9f4">Markdown</a>
+            <a href="/tags/Markdown/" style="color: #ffa2c4">Markdown</a>
         </span>
         
     </div>
