@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>NFF の小窝</title>
+    <meta name="author" content="N FF" />
+    <meta name="description" content="一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="stylesheet" href="/css/<file>" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NFF の小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NFF の小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-images="/images/background.jpg"></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>NFF の小窝</h1>
+                <h3></h3>
+                <h5>一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。</h5>
+            </div>
+        </span>
+    </div>
+</div>
+<div id="home-posts-wrap" true ref="homePostsWrap">
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2023/10/15/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+        <h2 class="post-title">深度学习数学基础</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                深度学习
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/15
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>[TOC]</p>
+<h2 id="张量-tensor"><a href="#张量-tensor" class="headerlink" title="张量 (tensor)"></a>张量 (tensor)</h2><h4 id="0阶张量-标量-scalar"><a href="#0阶张量-标量-scalar" class="headerlink" title="0阶张量 (标量, scalar)"></a>0阶张量 (标量, scalar)</h4><blockquote>
+<p>x &#x3D; np.array(12)</p>
+</blockquote>
+<h4 id="1阶张量-向量-vector"><a href="#1阶张量-向量-vector" class="headerlink" title="1阶张量 (向量, vector)"></a>1阶张量 (向量, vector)</h4><blockquote>
+<p>x &#x3D; np.array([1, 2, 3, 4, 5])</p>
+</blockquote>
+<p>该张量有一个轴，该向量为5维向量</p>
+<h4 id="2阶张量-矩阵-matrix"><a href="#2阶张量-矩阵-matrix" class="headerlink" title="2阶张量 (矩阵, matrix)"></a>2阶张量 (矩阵, matrix)</h4><blockquote>
+<p>x &#x3D; np.array([[1, 2, 3, 4, 50],</p>
+<p>​                        [6, 7, 8, 9, 10],</p>
+<p>​                        [1, 2, 3, 4, 20])</p>
+</blockquote>
+<p>该张量有两个轴 (行和列)</p>
+<h4 id="3阶张量与更高阶的张量"><a href="#3阶张量与更高阶的张量" class="headerlink" title="3阶张量与更高阶的张量"></a>3阶张量与更高阶的张量</h4><blockquote>
+<p>x &#x3D; np.array([[[1, 2, 3, 10],</p>
+<p>​                         [2, 4, 6, 20]],</p>
+<p>​                        [[1, 3, 5, 10],</p>
+<p>​                         [2, 5, 8, 20]]])</p>
+</blockquote>
+<p>该3阶张量由两个矩阵组成，可以理解为数字组成的长方体</p>
+<h4 id="关键属性"><a href="#关键属性" class="headerlink" title="关键属性"></a>关键属性</h4><ol>
+<li><p>阶数 (轴的个数, ndim)</p>
+</li>
+<li><p>形状 (张量沿每个轴的维度大小或元素个数, shape)</p>
+<blockquote>
+<p>矩阵的形状为 (3, 5)</p>
+<p>向量的形状为 (5,)</p>
+<p>标量的形状为 ()</p>
+</blockquote>
+</li>
+<li><p>数据类型 (dtype)</p>
+</li>
+<li><p>以MNIST数据集为例：</p>
+<blockquote>
+<p>train_images.ndim &#x3D; 3</p>
+<p>train_images.shape &#x3D; (60000, 28, 28)</p>
+<p>train_images.dtype &#x3D; unit8  8位整数, 取值为0~255</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="操作张量"><a href="#操作张量" class="headerlink" title="操作张量"></a>操作张量</h4><p>张量切片 (tensor slicing)</p>
+<p><strong>沿着第一个轴操作张量</strong></p>
+<blockquote>
+<p>train_images[i]  第 i 张数字图像</p>
+<p>my_slice &#x3D; train_images[10:100]  选择第10~100 (不含100) 张数字图像，等同于</p>
+<blockquote>
+<p>my_slice &#x3D; train_images[10:100,  : ,  : ]</p>
+<p>my_slice &#x3D; train_images[10:100, 0:28, 0:28]</p>
+</blockquote>
+</blockquote>
+<p><strong>沿着第二个和第三个轴操作张量</strong></p>
+<blockquote>
+<p>my_slice &#x3D; train_images[ : , 14:, 14:]  所有图像的右下角14像素×14像素的区域</p>
+<p>my_slice &#x3D; train_images[ : , 7:-7, 7:-7]  所有图像中心的14像素×14像素的区域</p>
+</blockquote>
+<h4 id="数据批量"><a href="#数据批量" class="headerlink" title="数据批量"></a>数据批量</h4><p>张量的第一个轴 (轴0) 是样本轴 (sample axis)，深度学习模型将数据拆分为小批量后进行处理</p>
+<blockquote>
+<p>batch &#x3D; train_images[:128]  第0个批量</p>
+<p>batch &#x3D; train_images[128 * n:128 * (n + 1)]  第 n 个批量</p>
+<p>第一个轴 (轴0) 叫做批量轴 (batch axis)</p>
+</blockquote>
+<h4 id="现实世界中的数据张量实例"><a href="#现实世界中的数据张量实例" class="headerlink" title="现实世界中的数据张量实例"></a>现实世界中的数据张量实例</h4><ol>
+<li>向量数据：2阶张量，形状为 (samples, features)<ul>
+<li>每个样本是一个特征向量</li>
+</ul>
+</li>
+<li>时间序列数据：3阶张量，形状为 (samples, timesteps, features)<ul>
+<li>每个样本是特征向量组成的序列，序列长度为 timesteps</li>
+</ul>
+</li>
+<li>图像数据：4阶张量，形状为 (samples, height, width, channels)<ul>
+<li>每个样本是一个二维像素网格，每个像素由一个”通道” (channel) 向量表示</li>
+<li>一张灰度图像可以保存在一个2阶张量中</li>
+</ul>
+</li>
+<li>视频数据：5阶张量，形状为 (samples, frames, height, width, channels)<ul>
+<li>每个样本是都是由图像 (一帧) 组成的序列，序列长度 (每个视频帧的数量) 为 frames</li>
+</ul>
+</li>
+</ol>
+<h4 id="张量计算"><a href="#张量计算" class="headerlink" title="张量计算"></a>张量计算</h4><p><strong>逐元素运算 (加法和 relu 运算)</strong></p>
+<blockquote>
+<p>import numpy as np</p>
+<p>z &#x3D; x + y  逐元素相加</p>
+<p>z &#x3D; np.maximum(z, 0.)  逐元素 relu</p>
+<p>z &#x3D; x * y  逐元素乘积</p>
+</blockquote>
+<p><strong>广播 (broadcast)</strong></p>
+<p>在没有歧义且可行的情况下，阶数较低的张量会被广播，以匹配阶数较高的*张量的形状。步骤如下：</p>
+<ol>
+<li>向小张量添加轴 (广播轴，broadcast axis)，使其 ndim 与大张量相同</li>
+<li>将小张量沿着广播轴重复，使其形状与大张量相同</li>
+</ol>
+<p><strong>张量积 (tensoor product) 或点积 (dot product)</strong></p>
+<ol>
+<li>向量-向量点积</li>
+</ol>
+<blockquote>
+<p>x &#x3D; np.random.random((32,))</p>
+<p>y &#x3D; np.random.random((32,))</p>
+<p>z &#x3D; np.dot(x, y)</p>
+<p>两个向量的点积是一个标量，只有元素个数相同的向量才能进行点积运算</p>
+</blockquote>
+<ol start="2">
+<li><p>矩阵-向量点积</p>
+<p>矩阵的第1维与向量的第0维必须相同，运算结果是一个向量，该向量的维数与矩阵第0维相同</p>
+<p>注意，只要两个张量中有一个的 ndim &gt; 1，则dot运算不对称，即 dot(x, y) !&#x3D; dot(y, x)</p>
+</li>
+<li><p>矩阵-矩阵点积</p>
+<p>对于矩阵x和y，当且仅当 x.shape[1] &#x3D;&#x3D; y.shape[0] 时，方可进行点积计算，点积结果为一形状为 (x.shape[0], y.shape[1])的矩阵，其元素是x的行与y的列之间的向量点积。</p>
+</li>
+<li><p>更高阶的张量点积运算</p>
+<blockquote>
+<p>(a, b, c, d) · (d,)  —-&gt;  (a, b, c)</p>
+<p>(a, b, c, d) · (d, e)  —-&gt;  (a, b, c, e)</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>张量变形 (tensor reshaping)</strong></p>
+<ul>
+<li>转置 (transpose)</li>
+</ul>
+<p><strong>张量运算的几何解释</strong></p>
+<ul>
+<li>加法：将物体沿着某个方向**平移 (translation) **一段距离</li>
+<li>与矩阵 R &#x3D; [[cos (theta), -sin (theta)], [sin (theta), cos (theta)]] 点积：逆时针<strong>旋转 (rotation)</strong>  θ 角</li>
+<li>与矩阵 R &#x3D; [[horizontal_factor, 0], [0, vertical_factor]] 点积：在水平和垂直方向上进行<strong>缩放 (scaling)</strong></li>
+<li>与任意矩阵点积：<strong>线性变换 (linear transform)</strong></li>
+<li>一次点积与一次加法 (线性变换+平移)：<strong>仿射变换 (affine transform)</strong></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="color: #00a596">深度学习</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%BC%A0%E9%87%8F/" style="color: #ff7d73">张量</a>
+        </span>
+        
+    </div>
+    <a href="/2023/10/15/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/">
+        <h2 class="post-title">测试文章</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/14
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><img src="/2023/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/111.png" alt="img"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/13/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        <h2 class="post-title">Markdown学习笔记</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%BC%96%E8%BE%91/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                编辑
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h5 id="1、标题的语法"><a href="#1、标题的语法" class="headerlink" title="1、标题的语法"></a>1、标题的语法</h5><p>“# title” 即为标题的语法。需要注意的是，”#” 与 title 之间存在一个空格。# 的数量表征标题的层级，数量越多，标题的级别越低，字体也越小。</p>
+<h5 id="2、正文部分"><a href="#2、正文部分" class="headerlink" title="2、正文部分"></a>2、正文部分</h5><ol>
+<li><p>段落：使用空白行进行段落之间的分隔，不要使用 Tab 和 Space 控制缩进。</p>
+</li>
+<li><p>换行：一行末尾添加两个及以上空格，然后按回车键。  </p>
+</li>
+<li><p>强调：</p>
+<ol>
+<li>粗体——两个“星号”：My name is <strong>NFF</strong>.  </li>
+<li>斜体——一个“星号”：My name is <em>NFF</em>.</li>
+<li>同时——三个“星号”：My name is <em><strong>NFF</strong></em>.</li>
+</ol>
+</li>
+<li><p>块引用：</p>
+<blockquote>
+<p>在段落前添加 &gt; 可以创建块引用</p>
+<blockquote>
+<p>块引用可以嵌套使用</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>链接：[超链接显示名] (超链接地址 “超链接标题”)<br><a target="_blank" rel="noopener" href="https://markdown.com.cn/basic-syntax/" title="Markdown官方教程">本文参考自Markdown官方教程</a><br>使用&lt;&gt;可以使URL或email变成可点击的链接，如 <a target="_blank" rel="noopener" href="https://baidu.com/">https://baidu.com</a></p>
+</li>
+<li><p>添加图片：![图片alt] (图片链接 “图片标题”)<br> <img src="https://cdn.pixabay.com/photo/2023/09/20/19/47/stones-8265502_1280.jpg" alt="图片1" title="Stones Ocean"></p>
+</li>
+<li><p>转义字符：\</p>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Markdown/" style="color: #ff7d73">Markdown</a>
+        </span>
+        
+    </div>
+    <a href="/2023/10/13/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/13/%E3%80%8A%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92%E3%80%8B/">
+        <h2 class="post-title">《认知觉醒》</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E9%98%85%E8%AF%BB/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                阅读
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/13/%E3%80%8A%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92%E3%80%8B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/13/%E3%80%8A%E8%8A%AF%E7%89%87%E7%AE%80%E5%8F%B2%E3%80%8B/">
+        <h2 class="post-title">《芯片简史》</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E9%98%85%E8%AF%BB/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                阅读
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/13/%E3%80%8A%E8%8A%AF%E7%89%87%E7%AE%80%E5%8F%B2%E3%80%8B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/">
+        <h2 class="post-title">如何写好一篇论文——北美老刘ResearchTIPS</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                论文写作
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1-论文的三段式结构"><a href="#1-论文的三段式结构" class="headerlink" title="1. 论文的三段式结构"></a>1. 论文的三段式结构</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\001.png"></p>
+<p>Introduction 论证研究目标的合理，以文献中的资料为论据。论述结构：从普遍到特定<br>Discussion &amp; Conclusion 论证研究目标的价值，主要以自己的研究工作为论据，也包括文献中的资料。论述结构：从特定到普遍</p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>引言段尽早写，可以早于实验和数据，因为它不依赖于实验和数据，又可以指导实验进行<br>引言和结论段的作用是说服读者阅读这篇文章</p>
+<h1 id="2-引言的逻辑"><a href="#2-引言的逻辑" class="headerlink" title="2. 引言的逻辑"></a>2. 引言的逻辑</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\002.png"></p>
+<h1 id="3-研究选题的三种途径"><a href="#3-研究选题的三种途径" class="headerlink" title="3. 研究选题的三种途径"></a>3. 研究选题的三种途径</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\003.png"></p>
+<h4 id="好的课题"><a href="#好的课题" class="headerlink" title="好的课题"></a>好的课题</h4><p>具体可行、适合现有资源条件<br>可证伪<br>激发创新</p>
+<h1 id="4-确立研究目标的两个原则"><a href="#4-确立研究目标的两个原则" class="headerlink" title="4. 确立研究目标的两个原则"></a>4. 确立研究目标的两个原则</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\004.png"></p>
+<h1 id="5-文献综述的两个基本点"><a href="#5-文献综述的两个基本点" class="headerlink" title="5. 文献综述的两个基本点"></a>5. 文献综述的两个基本点</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\005.png"></p>
+<h1 id="6-阅读文献的两个阶段"><a href="#6-阅读文献的两个阶段" class="headerlink" title="6. 阅读文献的两个阶段"></a>6. 阅读文献的两个阶段</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\006.png"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/10/hello-world/">
+        <h2 class="post-title">Hello Worlds</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/10/hello-world/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    
+    <a class="page-num" href="/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">2</span>
+    
+    
+    
+    
+</div>
+
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">N FF</div>
+        <div class="description">
+            <p>愚者<br>东京帅哥</p>
+
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://nff825.github.io">NFF の小窝</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2023 NFF の小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;N FF
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/<file>"></script>
+    
+</body>
+</html>

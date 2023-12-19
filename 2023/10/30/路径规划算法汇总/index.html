@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>如何写好一篇论文——北美老刘ResearchTIPS | NFF の小窝</title>
+    <title>路径规划算法汇总 | NFF の小窝</title>
     <meta name="author" content="N FF" />
     <meta name="description" content="一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。" />
     <meta name="keywords" content="" />
@@ -151,38 +151,190 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>如何写好一篇论文——北美老刘ResearchTIPS</h1>
+        <h1>路径规划算法汇总</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/10/11
-        </span>
-        
-        <span class="category">
-            <a href="/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                论文写作
-            </a>
+            2023/10/30
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="1-论文的三段式结构"><a href="#1-论文的三段式结构" class="headerlink" title="1. 论文的三段式结构"></a>1. 论文的三段式结构</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\001.png"></p>
-<p>Introduction 论证研究目标的合理，以文献中的资料为论据。论述结构：从普遍到特定<br>Discussion &amp; Conclusion 论证研究目标的价值，主要以自己的研究工作为论据，也包括文献中的资料。论述结构：从特定到普遍</p>
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>引言段尽早写，可以早于实验和数据，因为它不依赖于实验和数据，又可以指导实验进行<br>引言和结论段的作用是说服读者阅读这篇文章</p>
-<h1 id="2-引言的逻辑"><a href="#2-引言的逻辑" class="headerlink" title="2. 引言的逻辑"></a>2. 引言的逻辑</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\002.png"></p>
-<h1 id="3-研究选题的三种途径"><a href="#3-研究选题的三种途径" class="headerlink" title="3. 研究选题的三种途径"></a>3. 研究选题的三种途径</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\003.png"></p>
-<h4 id="好的课题"><a href="#好的课题" class="headerlink" title="好的课题"></a>好的课题</h4><p>具体可行、适合现有资源条件<br>可证伪<br>激发创新</p>
-<h1 id="4-确立研究目标的两个原则"><a href="#4-确立研究目标的两个原则" class="headerlink" title="4. 确立研究目标的两个原则"></a>4. 确立研究目标的两个原则</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\004.png"></p>
-<h1 id="5-文献综述的两个基本点"><a href="#5-文献综述的两个基本点" class="headerlink" title="5. 文献综述的两个基本点"></a>5. 文献综述的两个基本点</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\005.png"></p>
-<h1 id="6-阅读文献的两个阶段"><a href="#6-阅读文献的两个阶段" class="headerlink" title="6. 阅读文献的两个阶段"></a>6. 阅读文献的两个阶段</h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/Hexo\source\pic\006.png"></p>
+        <table>
+<thead>
+<tr>
+<th>算法</th>
+<th>提出者</th>
+<th>时间</th>
+<th>原理</th>
+<th>重要概念</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>蚁群算法 (Ant Colony Algorithm, ACA)</td>
+<td>Marco Dorigo</td>
+<td>1992年</td>
+<td>模拟蚂蚁的觅食行为</td>
+<td>信息素</td>
+</tr>
+</tbody></table>
+<h3 id="蚁群算法"><a href="#蚁群算法" class="headerlink" title="蚁群算法"></a>蚁群算法</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>蚂蚁</p>
+<ul>
+<li>在其经过的路径上释放信息素</li>
+<li>能够感知其它蚂蚁释放的信息素</li>
+<li>以较大的概率优先选择信息素浓度较高的路径</li>
+</ul>
+<p><strong>信息素</strong></p>
+<ul>
+<li>其浓度表征路径的远近</li>
+<li>会随时间推移而逐渐衰减</li>
+</ul>
+<p>解决优化问题的基本思路</p>
+<ul>
+<li>蚂蚁的行走路径——可行解</li>
+<li>整个蚂蚁群体的所有路径——解空间</li>
+<li>最终，整个蚂蚁群体会在<strong>正反馈</strong>的作用下集中在最佳路径上——最优解</li>
+</ul>
+<h4 id="2-数学模型"><a href="#2-数学模型" class="headerlink" title="2. 数学模型"></a>2. 数学模型</h4><h4 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3. 算法流程"></a>3. 算法流程</h4><ol>
+<li>初始化参数<ul>
+<li>蚁群规模</li>
+<li>信息素重要程度因子</li>
+<li>启发函数重要程度因子</li>
+<li>信息素挥发因子</li>
+<li>信息素释放总量</li>
+<li>最大迭代次数</li>
+<li>迭代次数初值</li>
+</ul>
+</li>
+<li>构建解空间<ul>
+<li>将蚂蚁随机置于不同出发点，对每只蚂蚁计算其下一个访问的城市</li>
+</ul>
+</li>
+<li>更新信息素<ul>
+<li>计算每条蚂蚁经过的路径长度，记录当前最优解，更新每条路径的信息素浓度</li>
+</ul>
+</li>
+<li>判断是否终止</li>
+</ol>
+<h4 id="4-特点"><a href="#4-特点" class="headerlink" title="4. 特点"></a>4. 特点</h4><ul>
+<li>正反馈，逼近最优解</li>
+<li>个体通过信息素影响环境，个体能实时感知环境变化，个体间通过环境间接通信</li>
+<li>多个个体同时进行并行计算，提高算法的计算能力和运行效率</li>
+<li>启发式的概率搜索方式，不易陷入局部最优，易于寻找全局最优解</li>
+</ul>
+<h3 id="旅行商问题-Traveling-Salesman-Problem-TSP"><a href="#旅行商问题-Traveling-Salesman-Problem-TSP" class="headerlink" title="旅行商问题 (Traveling Salesman Problem, TSP)"></a>旅行商问题 (Traveling Salesman Problem, TSP)</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><ul>
+<li>在 $N$ 个城市中各经历一次后回到出发点，使所经过的路程最短</li>
+<li>不考虑方向，可能存在的闭合路径数目为 $\frac{(N-1)!}{2}$ </li>
+<li>TSP 问题常被用于验证算法性能</li>
+</ul>
+<h4 id="2-MATLAB-重点函数"><a href="#2-MATLAB-重点函数" class="headerlink" title="2.  MATLAB 重点函数"></a>2.  MATLAB 重点函数</h4><ul>
+<li>ismember(A, S)<ul>
+<li>返回一个形状和 A 相同的向量</li>
+<li>A 中的元素在 S 中能找到，对应位置的元素为1，否则为0</li>
+<li>~的作用是取反</li>
+</ul>
+</li>
+<li>cumsum(A)<ul>
+<li>返回一个形状和 A 相同的向量</li>
+<li>对应位置的值是 A 前几个元素的和</li>
+</ul>
+</li>
+<li>num2str(A)<ul>
+<li>返回一个字符串</li>
+<li>将数字转换为字符串</li>
+</ul>
+</li>
+<li>text(x, y, ‘string’)<ul>
+<li>在位置 (x, y) 处标上字符串string</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-具体步骤"><a href="#3-具体步骤" class="headerlink" title="3. 具体步骤"></a>3. 具体步骤</h4><ol>
+<li><p>清空环境变量</p>
+<blockquote>
+<p>clear all</p>
+<p>clc
+ </p>
+</blockquote>
+</li>
+<li><p>导入数据</p>
+<blockquote>
+<p>load cities_data.mat</p>
+</blockquote>
+</li>
+<li><p>计算城市间的距离</p>
+<blockquote>
+<p>n &#x3D; size(cities, 1);</p>
+<p>D &#x3D; zeros(n, n)</p>
+<p>for i &#x3D; 1:n</p>
+<p>​    for j &#x3D; 1:n</p>
+<p>​		if i ~&#x3D; j</p>
+<p>​			<strong>D(i, j) &#x3D; sqrt(sum(cities(i, :) - cities(j, :)).^2));</strong></p>
+<p>​		else</p>
+<p>​			D(i, j) &#x3D; 1e-4;</p>
+<p>​		end</p>
+<p>​	end</p>
+<p>end</p>
+</blockquote>
+</li>
+<li><p>初始化参数</p>
+<blockquote>
+<p>m &#x3D; 50;</p>
+<p>alpha &#x3D; 1;</p>
+<p>beta &#x3D; 5;</p>
+<p>rho &#x3D; 0.1</p>
+<p>Q &#x3D; 1;</p>
+<p>Eta &#x3D; 1.&#x2F;D;</p>
+<p>Tau &#x3D; ones(n, n);</p>
+<p>Table &#x3D; zeros(m, n)</p>
+<p>iter &#x3D; 1;</p>
+<p>iter_max &#x3D; 200;</p>
+<p>Route_best &#x3D; zeros(iter_max, n);</p>
+<p>Length_best &#x3D; zeros(iter_max, 1);</p>
+<p>Length_ave &#x3D; zeros(iter_max, 1);</p>
+</blockquote>
+</li>
+<li><p>迭代寻找最佳路径</p>
+<blockquote>
+<p>while iter &lt;&#x3D; iter_max</p>
+<p>​	% 随机产生各个蚂蚁的起点城市</p>
+<p>​	start &#x3D; zeros(m, 1);</p>
+<p>​	for i &#x3D; 1:m</p>
+<p>​		temp &#x3D; randperm(n);</p>
+<p>​		start(i) &#x3D; temp(1);</p>
+<p>​	end</p>
+<p>​	Table(:, 1) &#x3D; start;</p>
+<p>​	cities_index &#x3D; 1: n;</p>
+<p>​	% 逐个蚂蚁路径选择</p>
+<p>​	for i &#x3D;1 : m</p>
+<p>​		% 逐个城市路径选择</p>
+<p>​		for j &#x3D; 2 : n</p>
+<p>​			tabu &#x3D; Table(i, 1 : (j - 1));  % 已访问的城市集合</p>
+<p>​			allow_index &#x3D; ~ismember(cities_index, tabu);</p>
+<p>​			<strong>allow &#x3D; cities_index(allow_index);</strong>  % 待访问的城市集合</p>
+<p>​			P &#x3D; allow;</p>
+<p>​			% 计算城市间转移概率</p>
+<p>​			for k &#x3D; 1 : length(allow)</p>
+<p>​				<strong>P(k) &#x3D; Tau(tabu(end), allow(k))^alpha * Eta(tabu(end), allow(k)) ^ beta;</strong></p>
+<p>​			end</p>
+<p>​			P &#x3D; P &#x2F; sum(P);</p>
+<p>​			% 轮盘赌法选择下一个访问城市</p>
+<p>​			Pc &#x3D; cumsum(P);</p>
+<p>​			target_index &#x3D; find(Pc &gt;&#x3D; rand);</p>
+<p>​			target &#x3D; allow(target_index(1));</p>
+<p>​			Table(i, j) &#x3D; target;</p>
+<p>​		end</p>
+<p>​	end</p>
+<p>​	% 计算各个蚂蚁的路径距离</p>
+<p>​	Length &#x3D; </p>
+</blockquote>
+</li>
+</ol>
 
     </div>
     
