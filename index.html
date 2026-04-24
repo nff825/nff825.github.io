@@ -173,6 +173,102 @@
         
 
 <div class="post">
+    <a href="/2026/04/24/%E7%BD%91%E7%AB%99%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/">
+        <h2 class="post-title">网站更新操作手册</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E5%8A%9E%E5%85%AC/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                办公
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/4/24
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>这篇文档用于记录个人网站的标准更新流程，按步骤执行即可完成发布。</p>
+<h2><span id="一-常用命令">一、常用命令</span></h2><pre><code class="bash">npm run clean
+</code></pre>
+<p>清理 Hexo 缓存和历史生成内容。</p>
+<pre><code class="bash">npm run build
+</code></pre>
+<p>生成静态网页到 <code>public/</code>。</p>
+<pre><code class="bash">npm run deploy
+</code></pre>
+<p>将 <code>public/</code> 内容发布到 GitHub Pages 仓库。</p>
+<pre><code class="bash">npm run preview
+</code></pre>
+<p>本地预览（清理 + 生成 + 本地服务）。</p>
+<pre><code class="bash">npm run check:paths
+</code></pre>
+<p>检查 Markdown 是否包含本机绝对路径（如 <code>C:\...</code>），避免图片线上失效。</p>
+<h2><span id="二-日常发文流程">二、日常发文流程</span></h2><ol>
+<li>新建文章<br><code>npx hexo new post &quot;文章标题&quot;</code></li>
+<li>编辑文章<br>在 <code>source/_posts/</code> 中编辑对应 <code>.md</code> 文件。</li>
+<li>插入图片<br>将图片放在文章同名文件夹中，并使用相对路径，如：<code>![示例](image.png)</code>。</li>
+<li>检查路径<br><code>npm run check:paths</code></li>
+<li>本地生成<br><code>npm run build</code></li>
+<li>发布上线<br><code>npm run deploy</code></li>
+</ol>
+<h2><span id="三-快速发布流程推荐">三、快速发布流程（推荐）</span></h2><pre><code class="bash">npm run clean
+npm run build
+npm run deploy
+</code></pre>
+<h2><span id="四-常见问题排查">四、常见问题排查</span></h2><h3><span id="1-执行到-validating-config-后不继续">1. 执行到 <code>Validating config</code> 后不继续</span></h3><p>优先检查是否有路径检查报错：</p>
+<pre><code class="bash">npm run check:paths
+</code></pre>
+<p>若提示类似 <code>C:\Users\...</code>，请改为相对路径，并把图片放入文章资源目录。</p>
+<h3><span id="2-permission-denied-publickey">2. <code>Permission denied (publickey)</code></span></h3><p>说明在使用 SSH 推送但本机 SSH Key 未配置好。可改为 HTTPS 仓库地址，或配置 GitHub SSH Key。</p>
+<h3><span id="3-could-not-read-username-for-39httpsgithubcom39">3. <code>could not read Username for &#39;https://github.com&#39;</code></span></h3><p>说明 Git 凭据未正确配置。可执行：</p>
+<pre><code class="bash">git config --global credential.helper manager-core
+</code></pre>
+<p>然后重新 <code>npm run deploy</code>，按提示登录 GitHub。</p>
+<h3><span id="4-部署后网页没变化">4. 部署后网页没变化</span></h3><ol>
+<li>确认 <code>npm run deploy</code> 最终成功。  </li>
+<li>等待 1-5 分钟再刷新。  </li>
+<li>浏览器强制刷新（<code>Ctrl + F5</code>）。</li>
+</ol>
+<h2><span id="五-建议">五、建议</span></h2><p>每次发布前至少执行一次 <code>npm run check:paths</code>，可以提前避免绝大多数“本地正常、线上图片丢失”的问题。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Hexo/" style="color: #00a596">Hexo</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4/" style="color: #ff7d73">网站维护</a>
+        </span>
+        
+    </div>
+    <a href="/2026/04/24/%E7%BD%91%E7%AB%99%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2025/05/17/%E5%A2%9E%E5%80%BC%E7%A8%8E%E6%99%AE%E9%80%9A%E5%8F%91%E7%A5%A8/">
         <h2 class="post-title">增值税普通发票</h2>
     </a>
@@ -345,12 +441,12 @@
         
         <span class="tag">
             
-            <a href="/tags/Nastran/" style="color: #00a596">Nastran</a>
+            <a href="/tags/Nastran/" style="color: #ff7d73">Nastran</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/" style="color: #ff7d73">频响分析</a>
+            <a href="/tags/%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/" style="color: #ffa2c4">频响分析</a>
         </span>
         
     </div>
@@ -452,17 +548,17 @@
         
         <span class="tag">
             
-            <a href="/tags/HyperMesh/" style="color: #ff7d73">HyperMesh</a>
+            <a href="/tags/HyperMesh/" style="color: #03a9f4">HyperMesh</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Nastran/" style="color: #ffa2c4">Nastran</a>
+            <a href="/tags/Nastran/" style="color: #ff7d73">Nastran</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #00a596">重力分析</a>
+            <a href="/tags/%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #ffa2c4">重力分析</a>
         </span>
         
     </div>
@@ -603,17 +699,17 @@ Node 2:
         
         <span class="tag">
             
-            <a href="/tags/HyperMesh/" style="color: #03a9f4">HyperMesh</a>
+            <a href="/tags/HyperMesh/" style="color: #ffa2c4">HyperMesh</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Nastran/" style="color: #00a596">Nastran</a>
+            <a href="/tags/Nastran/" style="color: #03a9f4">Nastran</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #03a9f4">静力分析</a>
+            <a href="/tags/%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #00a596">静力分析</a>
         </span>
         
     </div>
@@ -658,22 +754,17 @@ Node 2:
 <h1><span id="重点">重点</span></h1><p>了解项目类型：军&#x2F;民，横&#x2F;纵</p>
 <p>了解所处阶段：招投标&#x2F;合同签订</p>
 <h1><span id="具体流程">具体流程</span></h1><h2><span id="学院科研办科研与基地建设办公室机械楼a-209">学院科研办（科研与基地建设办公室，机械楼A 209）</span></h2><ul>
-<li><p>王老师，邢老师</p>
-</li>
-<li><p>登记</p>
-</li>
-<li><p>项目合同&#x2F;协议审批表：技术合同章</p>
-<ul>
+<li>王老师，邢老师</li>
+<li>登记</li>
+<li>项目合同&#x2F;协议审批表：技术合同章<ul>
 <li>自行填写内容</li>
 <li>经办人签字盖章</li>
 </ul>
 </li>
-<li><p>用印审批单：校印&#x2F;校长印</p>
-<ul>
+<li>用印审批单：校印&#x2F;校长印<ul>
 <li>自行填写内容</li>
 <li>经办人签字盖章</li>
 </ul>
-<p><img src="/2025/04/30/%E6%A8%AA%E5%90%91%E9%A1%B9%E7%9B%AE%E7%94%A8%E5%8D%B0%E7%9B%96%E7%AB%A0%E6%B5%81%E7%A8%8B/image-20251124140912088.png" alt="11image-20251124140912088"></p>
 </li>
 </ul>
 <h2><span id="重大项目办公室行政b楼-619">重大项目办公室（行政B楼 619）</span></h2><ul>
@@ -726,7 +817,7 @@ Node 2:
         
         <span class="tag">
             
-            <a href="/tags/%E5%8A%9E%E5%85%AC/" style="color: #03a9f4">办公</a>
+            <a href="/tags/%E5%8A%9E%E5%85%AC/" style="color: #00bcd4">办公</a>
         </span>
         
     </div>
@@ -837,7 +928,7 @@ disp(&#39;done&#39;);
         
         <span class="tag">
             
-            <a href="/tags/EFEA/" style="color: #00bcd4">EFEA</a>
+            <a href="/tags/EFEA/" style="color: #03a9f4">EFEA</a>
         </span>
         
     </div>
@@ -921,7 +1012,7 @@ disp(&#39;done&#39;);
         
         <span class="tag">
             
-            <a href="/tags/PIML/" style="color: #00bcd4">PIML</a>
+            <a href="/tags/PIML/" style="color: #03a9f4">PIML</a>
         </span>
         
     </div>
@@ -1130,77 +1221,21 @@ disp(&#39;done&#39;);
         
         <span class="tag">
             
-            <a href="/tags/%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/" style="color: #ff7d73">模态分析</a>
+            <a href="/tags/%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/" style="color: #00bcd4">模态分析</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/HyperMesh/" style="color: #00bcd4">HyperMesh</a>
+            <a href="/tags/HyperMesh/" style="color: #00a596">HyperMesh</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Nastran/" style="color: #ff7d73">Nastran</a>
+            <a href="/tags/Nastran/" style="color: #03a9f4">Nastran</a>
         </span>
         
     </div>
     <a href="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/10/13/%E6%AF%8F%E6%97%A5%E6%94%B6%E8%8E%B7%E3%80%81%E7%83%A6%E5%BF%A7%E4%B8%8E%E6%80%9D%E8%80%83-2023-10/">
-        <h2 class="post-title">每日收获与烦忧_2023_10</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%94%9F%E6%B4%BB/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                生活
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/10/13
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1><span id="2023_10_12">2023_10_12</span></h1><h4><span id="今日收获">今日收获</span></h4><ol>
-<li>与导师的沟通技巧</li>
-</ol>
-<p>问候+前因+问题。适用于某段时间内首次与导师沟通或寻求帮助。首先，合适的  问候语显得有礼貌，不突兀，包括：您好、早上好、中秋节好等。其次，简洁明了地讲述事件的前因，可以让对方明白你的关注点，明确此次沟通围绕着何事展开。最后，明晰地阐明自己的意图：或是预约时间、或是进行确定、或是寻求意见、或是请求帮助。</p>
-<ol start="2">
-<li>是否去考驾照</li>
-</ol>
-<p>考驾照需要约1个月时间、4000余块钱、地点离交大很近。倘若近期不考驾照，或许读博期间就没有时间考驾照，可能得等到毕业之后才有空余时间去考。而在读博期间，驾照的存在对生活、学习和工作都有一定的便利，所以有必要去考驾照。</p>
-<p>C1 (手动挡) or C2 (自动挡)</p>
-<p>远达盛教练：15921177720 ，学费4800 C2，应该几个人一起报有优惠</p>
-<p>远达的盛教练 蛮好的<br>我三月一个月搞定的<br>微信号：wmqsw000</p>
-<p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/527733622_121322294">驾驶证C1和C2的区别，主要有三个方面，有一点很多人想不通！_搜狐汽车_搜狐网 (sohu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.icauto.com.cn/baike/68/689600.html">2023c1驾驶证体检要求新规，c1驾照体检项目和视力要求_车主指南 (icauto.com.cn)</a></p>
-<h4><span id></span></h4><h1><span id="2023_10_20">2023_10_20</span></h1><h4><span id="今日收获">今日收获</span></h4><ol>
-<li>研究方向的选择</li>
-</ol>
-<p>研究方向不能过于偏向工程 (项目) (应用)，否则难以创新，难以发论文。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/10/13/%E6%AF%8F%E6%97%A5%E6%94%B6%E8%8E%B7%E3%80%81%E7%83%A6%E5%BF%A7%E4%B8%8E%E6%80%9D%E8%80%83-2023-10/" class="go-post">阅读全文</a>
 </div>
 
 
