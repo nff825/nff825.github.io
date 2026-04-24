@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>HyperMesh for Nastran 重力分析 | NFF の小窝</title>
+    <meta name="author" content="N FF" />
+    <meta name="description" content="一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="stylesheet" href="/css/<file>" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NFF の小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NFF の小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>HyperMesh for Nastran 重力分析</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/2
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                仿真
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/HyperMesh/" style="color: #00a596">HyperMesh</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Nastran/" style="color: #00bcd4">Nastran</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #03a9f4">重力分析</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <hr>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=r6JJsdOTm5g&t=1677s">https://www.youtube.com/watch?v=r6JJsdOTm5g&amp;t=1677s</a></p>
+<hr>
+<!-- toc -->
+
+<ul>
+<li><a href="#1-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90">1 重力分析</a><ul>
+<li><a href="#11-%E5%AE%9A%E4%B9%89">1.1 定义</a></li>
+<li><a href="#12-%E4%BD%9C%E7%94%A8">1.2 作用</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%B5%81%E7%A8%8B">2 流程</a><ul>
+<li><a href="#21-%E6%89%93%E5%BC%80-hypermesh%E9%80%89%E6%8B%A9-nastran">2.1 打开 HyperMesh，选择 Nastran</a></li>
+<li><a href="#22-%E5%BB%BA%E7%AB%8B%E7%BD%91%E6%A0%BC">2.2 建立网格</a></li>
+<li><a href="#23-%E5%88%9B%E5%BB%BA%E6%9D%90%E6%96%99">2.3 创建材料</a></li>
+<li><a href="#24-%E5%88%9B%E5%BB%BA%E5%B1%9E%E6%80%A7">2.4 创建属性</a></li>
+<li><a href="#25-%E6%9B%B4%E6%96%B0%E7%BB%84%E4%BB%B6">2.5 更新组件</a></li>
+<li><a href="#26-%E6%A3%80%E6%9F%A5%E6%9D%90%E6%96%99%E4%B8%8E%E5%B1%9E%E6%80%A7">2.6 检查材料与属性</a></li>
+<li><a href="#27-%E8%AE%BE%E7%BD%AE%E7%BA%A6%E6%9D%9F">2.7 设置约束</a></li>
+<li><a href="#28-%E5%BB%BA%E7%AB%8B%E8%B4%A8%E7%82%B9">2.8 建立质点</a><ul>
+<li><a href="#281-%E5%BB%BA%E7%AB%8B%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9">2.8.1 建立临时节点</a></li>
+<li><a href="#282-%E5%88%9B%E5%BB%BA%E5%88%9A%E4%BD%93">2.8.2 创建刚体</a></li>
+<li><a href="#283-%E6%B8%85%E9%99%A4%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9">2.8.3 清除临时节点</a></li>
+<li><a href="#284-%E5%88%9B%E5%BB%BA%E8%B4%A8%E7%82%B9">2.8.4 创建质点</a></li>
+<li><a href="#285-%E8%B4%A8%E9%87%8F%E6%A3%80%E6%9F%A5">2.8.5 质量检查</a></li>
+</ul>
+</li>
+<li><a href="#29-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7">2.9 设置载荷</a></li>
+<li><a href="#210-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7%E6%AD%A5">2.10 设置载荷步</a></li>
+<li><a href="#211-%E5%AF%BC%E5%87%BA%E6%B1%82%E8%A7%A3%E6%96%87%E4%BB%B6">2.11 导出求解文件</a></li>
+<li><a href="#212-%E4%BD%BF%E7%94%A8-nastran-%E6%B1%82%E8%A7%A3">2.12 使用 Nastran 求解</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%BB%93%E6%9E%9C">3 结果</a><ul>
+<li><a href="#31-%E4%BD%8D%E7%A7%BB">3.1 位移</a></li>
+<li><a href="#32-%E6%94%AF%E5%8F%8D%E5%8A%9B">3.2 支反力</a></li>
+<li><a href="#33-%E5%BA%94%E5%8A%9B">3.3 应力</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-重力分析">1 重力分析</span></h1><h2><span id="11-定义">1.1 定义</span></h2><p>计算在自身重力的作用下，结构的位移、应力和支反力</p>
+<h2><span id="12-作用">1.2 作用</span></h2><p>可以检验模型的正确性：例如建模时倘若出现连接问题，计算会报错 (f06 文件存在 fatal)</p>
+<h1><span id="2-流程">2 流程</span></h1><h2><span id="21-打开-hypermesh选择-nastran">2.1 打开 HyperMesh，选择 Nastran</span></h2><h2><span id="22-建立网格">2.2 建立网格</span></h2><p>Geom–&gt;nodes–&gt;(0, 0, 0)–&gt;create–&gt;return<br>2D–&gt;planes–&gt;square–&gt;z-axis–&gt;选中该点–&gt;mesh, dele surf–&gt;400–&gt;create–&gt;return</p>
+<h2><span id="23-创建材料">2.3 创建材料</span></h2><h2><span id="24-创建属性">2.4 创建属性</span></h2><h2><span id="25-更新组件">2.5 更新组件</span></h2><h2><span id="26-检查材料与属性">2.6 检查材料与属性</span></h2><h2><span id="27-设置约束">2.7 设置约束</span></h2><h2><span id="28-建立质点">2.8 建立质点</span></h2><h3><span id="281-建立临时节点">2.8.1 建立临时节点</span></h3><p>(0, 0, 100)</p>
+<h3><span id="282-创建刚体">2.8.2 创建刚体</span></h3><p>1D–&gt;rigids–&gt;选中临时节点和多个网格节点–&gt;RBE 2–&gt;勾选所有自由度–&gt;create–&gt;return</p>
+<h3><span id="283-清除临时节点">2.8.3 清除临时节点</span></h3><h3><span id="284-创建质点">2.8.4 创建质点</span></h3><p>1D–&gt;masses–&gt;create–&gt;选中节点–&gt;mass&#x3D;2–&gt;CONM 2–&gt;create</p>
+<h3><span id="285-质量检查">2.8.5 质量检查</span></h3><p>Tool–&gt;mass calc–&gt;选中质点–&gt;calculate</p>
+<h2><span id="29-设置载荷">2.9 设置载荷</span></h2><p>Load Collectors–&gt;create–&gt;grav，GRAV–&gt;create&#x2F;edit–&gt;9810，N3&#x3D;1</p>
+<h2><span id="210-设置载荷步">2.10 设置载荷步</span></h2><p>Analysis–&gt;loadsteps–&gt;gravity_analysis–&gt;linear static–&gt;SPC，LOAD–&gt;create–&gt;return<br>Analysis–&gt;control cards–&gt;SOL(Statics)，POST(-1)，GLOBAL_OUTPUT_REQUEST (DISPLACEMENT，SPCFORCES，STRESS)</p>
+<h2><span id="211-导出求解文件">2.11 导出求解文件</span></h2><h2><span id="212-使用-nastran-求解">2.12 使用 Nastran 求解</span></h2><h1><span id="3-结果">3 结果</span></h1><h2><span id="31-位移">3.1 位移</span></h2><p><img src="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/displacement.png"></p>
+<h2><span id="32-支反力">3.2 支反力</span></h2><p><img src="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/spc_force.png"></p>
+<h2><span id="33-应力">3.3 应力</span></h2><p><img src="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/stress.png"></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2026 NFF の小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;N FF
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/<file>"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

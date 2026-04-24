@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>能量有限元(MATLAB) | NFF の小窝</title>
+    <meta name="author" content="N FF" />
+    <meta name="description" content="一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="stylesheet" href="/css/<file>" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NFF の小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NFF の小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>能量有限元(MATLAB)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/30
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E8%83%BD%E9%87%8F%E6%9C%89%E9%99%90%E5%85%83/" style="color: #03a9f4">能量有限元</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/MATLAB/" style="color: #00bcd4">MATLAB</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/EFEA/" style="color: #00a596">EFEA</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1><span id="主程序">主程序</span></h1><h2><span id="功能">功能</span></h2><p>指定参数空间（激励的位置、幅值、频率），进行能量有限元分析</p>
+<h2><span id="代码">代码</span></h2><pre><code class="matlab">%% 获取数据 不同激励设置
+clear; close all; clc
+%% ==========创建数据存储文件夹 ==========
+output_folder = &#39;EFEA_data_20250429_excitation_1800&#39;;
+if ~exist(output_folder, &#39;dir&#39;)
+    mkdir(output_folder);
+end
+%% ========== 设置固定参数 ==========
+geometry.length_x = 0.5075;    % 薄板在 x 方向的长度
+geometry.length_y = 0.4375;    % 薄板在 y 方向的长度
+geometry.h = 42.4382e-3;       % 薄板的厚度
+
+num_elements_x = 30;            % x 方向的单元数量
+num_elements_y = 30;            % y 方向的单元数量
+num_nodes = (num_elements_x+1)^2; % 节点数量
+
+material.E = 1.6966e9;          % 弹性模量
+material.rho = 94.2547;         % 密度
+material.mu = 0.3;              % 泊松比
+material.damping_ratio = 0.05; % 阻尼比
+%% ========== 设置可变参数范围 ==========
+frequencies = [500:10:550];
+amplitudes = [1:0.1:1.5];
+excitation_shifts = generate_excitation_shifts(num_nodes, 50);
+COUNT = numel(frequencies) * numel(amplitudes) * numel(excitation_shifts);
+%% ========== 生成数据 (并行计算) ==========
+delete(gcp); % 关闭并行池
+CoreNum = 4; % 设定机器CPU核心数量
+parpool(CoreNum); % 开启并行池
+parfor counter = 1:COUNT
+    [frequency, F, offset] = get_parameters(counter, frequencies, amplitudes, excitation_shifts);
+
+    %% ========== 激励设置 ==========
+    excitation_freq = frequency;                    % 激励频率
+    excitation_amp = F;                              % 激励幅值
+    excitation_pos = round(num_nodes/2) + offset;    % 激励位置
+    %% ========== 能量有限元分析 ==========
+    output_filename = sprintf(&#39;%s/data_%d.txt&#39;, output_folder, counter);
+    energy_density = EFEM_2D_plate(geometry, material, struct(&#39;freq&#39;, excitation_freq, &#39;amp&#39;, excitation_amp, &#39;pos&#39;, excitation_pos), num_elements_x, num_elements_y);
+    %% ========== 写入参数数据 ==========
+    fileID = fopen(output_filename, &#39;w&#39;);
+    fprintf(fileID, &#39;%.6f %.6f %.6f %.6f %.6f %.6f %.6f %.6f %.6f %.6f\n&#39;, ...
+        excitation_freq, excitation_amp, excitation_pos, ...
+        material.E, material.rho, material.mu, material.damping_ratio, ...
+        geometry.length_x, geometry.length_y, geometry.h);
+    %% ========== 换算能量密度（dB） ==========
+    E = reshape(energy_density, num_elements_x+1, num_elements_y+1);
+    E_ref = 1e-12;
+    E(E &lt; E_ref) = E_ref;
+    E_dB = 20 * log10(E / E_ref);
+    %% ========== 写入能量密度数据 ==========
+    [x_coords, y_coords] = meshgrid(linspace(0, geometry.length_x, num_elements_x+1), linspace(0, geometry.length_y, num_elements_y+1));
+    for i = 1:numel(x_coords)
+        fprintf(fileID, &#39;%.6f %.6f %.6f\n&#39;, x_coords(i), y_coords(i), E_dB(i));
+    end
+    fclose(fileID);
+    fprintf(&#39;%d/%d | freq = %d amp = %d offset = %d | %s\n&#39;, counter, COUNT, frequency, F, offset, output_filename);
+end
+
+disp(&#39;done&#39;);
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2026 NFF の小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;N FF
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/<file>"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

@@ -30,6 +30,11 @@
 <script src="/js/lib/highlight.js"></script>
 
 
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
 
 <script src="/js/lib/preview.js"></script>
 
@@ -168,8 +173,8 @@
         
 
 <div class="post">
-    <a href="/2023/10/30/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/">
-        <h2 class="post-title">路径规划算法汇总</h2>
+    <a href="/2025/05/17/%E5%A2%9E%E5%80%BC%E7%A8%8E%E6%99%AE%E9%80%9A%E5%8F%91%E7%A5%A8/">
+        <h2 class="post-title">增值税普通发票</h2>
     </a>
     <div class="category-and-date">
         
@@ -177,7 +182,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/10/30
+            2025/5/17
         </span>
         
         
@@ -185,176 +190,19 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <table>
-<thead>
-<tr>
-<th>算法</th>
-<th>提出者</th>
-<th>时间</th>
-<th>原理</th>
-<th>重要概念</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>蚁群算法 (Ant Colony Algorithm, ACA)</td>
-<td>Marco Dorigo</td>
-<td>1992年</td>
-<td>模拟蚂蚁的觅食行为</td>
-<td>信息素</td>
-</tr>
-</tbody></table>
-<h3 id="蚁群算法"><a href="#蚁群算法" class="headerlink" title="蚁群算法"></a>蚁群算法</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>蚂蚁</p>
-<ul>
-<li>在其经过的路径上释放信息素</li>
-<li>能够感知其它蚂蚁释放的信息素</li>
-<li>以较大的概率优先选择信息素浓度较高的路径</li>
-</ul>
-<p><strong>信息素</strong></p>
-<ul>
-<li>其浓度表征路径的远近</li>
-<li>会随时间推移而逐渐衰减</li>
-</ul>
-<p>解决优化问题的基本思路</p>
-<ul>
-<li>蚂蚁的行走路径——可行解</li>
-<li>整个蚂蚁群体的所有路径——解空间</li>
-<li>最终，整个蚂蚁群体会在<strong>正反馈</strong>的作用下集中在最佳路径上——最优解</li>
-</ul>
-<h4 id="2-数学模型"><a href="#2-数学模型" class="headerlink" title="2. 数学模型"></a>2. 数学模型</h4><h4 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3. 算法流程"></a>3. 算法流程</h4><ol>
-<li>初始化参数<ul>
-<li>蚁群规模</li>
-<li>信息素重要程度因子</li>
-<li>启发函数重要程度因子</li>
-<li>信息素挥发因子</li>
-<li>信息素释放总量</li>
-<li>最大迭代次数</li>
-<li>迭代次数初值</li>
-</ul>
-</li>
-<li>构建解空间<ul>
-<li>将蚂蚁随机置于不同出发点，对每只蚂蚁计算其下一个访问的城市</li>
-</ul>
-</li>
-<li>更新信息素<ul>
-<li>计算每条蚂蚁经过的路径长度，记录当前最优解，更新每条路径的信息素浓度</li>
-</ul>
-</li>
-<li>判断是否终止</li>
-</ol>
-<h4 id="4-特点"><a href="#4-特点" class="headerlink" title="4. 特点"></a>4. 特点</h4><ul>
-<li>正反馈，逼近最优解</li>
-<li>个体通过信息素影响环境，个体能实时感知环境变化，个体间通过环境间接通信</li>
-<li>多个个体同时进行并行计算，提高算法的计算能力和运行效率</li>
-<li>启发式的概率搜索方式，不易陷入局部最优，易于寻找全局最优解</li>
-</ul>
-<h3 id="旅行商问题-Traveling-Salesman-Problem-TSP"><a href="#旅行商问题-Traveling-Salesman-Problem-TSP" class="headerlink" title="旅行商问题 (Traveling Salesman Problem, TSP)"></a>旅行商问题 (Traveling Salesman Problem, TSP)</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><ul>
-<li>在 $N$ 个城市中各经历一次后回到出发点，使所经过的路程最短</li>
-<li>不考虑方向，可能存在的闭合路径数目为 $\frac{(N-1)!}{2}$ </li>
-<li>TSP 问题常被用于验证算法性能</li>
-</ul>
-<h4 id="2-MATLAB-重点函数"><a href="#2-MATLAB-重点函数" class="headerlink" title="2.  MATLAB 重点函数"></a>2.  MATLAB 重点函数</h4><ul>
-<li>ismember(A, S)<ul>
-<li>返回一个形状和 A 相同的向量</li>
-<li>A 中的元素在 S 中能找到，对应位置的元素为1，否则为0</li>
-<li>~的作用是取反</li>
-</ul>
-</li>
-<li>cumsum(A)<ul>
-<li>返回一个形状和 A 相同的向量</li>
-<li>对应位置的值是 A 前几个元素的和</li>
-</ul>
-</li>
-<li>num2str(A)<ul>
-<li>返回一个字符串</li>
-<li>将数字转换为字符串</li>
-</ul>
-</li>
-<li>text(x, y, ‘string’)<ul>
-<li>在位置 (x, y) 处标上字符串string</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-具体步骤"><a href="#3-具体步骤" class="headerlink" title="3. 具体步骤"></a>3. 具体步骤</h4><ol>
-<li><p>清空环境变量</p>
-<blockquote>
-<p>clear all</p>
-<p>clc
- </p>
-</blockquote>
-</li>
-<li><p>导入数据</p>
-<blockquote>
-<p>load cities_data.mat</p>
-</blockquote>
-</li>
-<li><p>计算城市间的距离</p>
-<blockquote>
-<p>n &#x3D; size(cities, 1);</p>
-<p>D &#x3D; zeros(n, n)</p>
-<p>for i &#x3D; 1:n</p>
-<p>​    for j &#x3D; 1:n</p>
-<p>​		if i ~&#x3D; j</p>
-<p>​			<strong>D(i, j) &#x3D; sqrt(sum(cities(i, :) - cities(j, :)).^2));</strong></p>
-<p>​		else</p>
-<p>​			D(i, j) &#x3D; 1e-4;</p>
-<p>​		end</p>
-<p>​	end</p>
-<p>end</p>
-</blockquote>
-</li>
-<li><p>初始化参数</p>
-<blockquote>
-<p>m &#x3D; 50;</p>
-<p>alpha &#x3D; 1;</p>
-<p>beta &#x3D; 5;</p>
-<p>rho &#x3D; 0.1</p>
-<p>Q &#x3D; 1;</p>
-<p>Eta &#x3D; 1.&#x2F;D;</p>
-<p>Tau &#x3D; ones(n, n);</p>
-<p>Table &#x3D; zeros(m, n)</p>
-<p>iter &#x3D; 1;</p>
-<p>iter_max &#x3D; 200;</p>
-<p>Route_best &#x3D; zeros(iter_max, n);</p>
-<p>Length_best &#x3D; zeros(iter_max, 1);</p>
-<p>Length_ave &#x3D; zeros(iter_max, 1);</p>
-</blockquote>
-</li>
-<li><p>迭代寻找最佳路径</p>
-<blockquote>
-<p>while iter &lt;&#x3D; iter_max</p>
-<p>​	% 随机产生各个蚂蚁的起点城市</p>
-<p>​	start &#x3D; zeros(m, 1);</p>
-<p>​	for i &#x3D; 1:m</p>
-<p>​		temp &#x3D; randperm(n);</p>
-<p>​		start(i) &#x3D; temp(1);</p>
-<p>​	end</p>
-<p>​	Table(:, 1) &#x3D; start;</p>
-<p>​	cities_index &#x3D; 1: n;</p>
-<p>​	% 逐个蚂蚁路径选择</p>
-<p>​	for i &#x3D;1 : m</p>
-<p>​		% 逐个城市路径选择</p>
-<p>​		for j &#x3D; 2 : n</p>
-<p>​			tabu &#x3D; Table(i, 1 : (j - 1));  % 已访问的城市集合</p>
-<p>​			allow_index &#x3D; ~ismember(cities_index, tabu);</p>
-<p>​			<strong>allow &#x3D; cities_index(allow_index);</strong>  % 待访问的城市集合</p>
-<p>​			P &#x3D; allow;</p>
-<p>​			% 计算城市间转移概率</p>
-<p>​			for k &#x3D; 1 : length(allow)</p>
-<p>​				<strong>P(k) &#x3D; Tau(tabu(end), allow(k))^alpha * Eta(tabu(end), allow(k)) ^ beta;</strong></p>
-<p>​			end</p>
-<p>​			P &#x3D; P &#x2F; sum(P);</p>
-<p>​			% 轮盘赌法选择下一个访问城市</p>
-<p>​			Pc &#x3D; cumsum(P);</p>
-<p>​			target_index &#x3D; find(Pc &gt;&#x3D; rand);</p>
-<p>​			target &#x3D; allow(target_index(1));</p>
-<p>​			Table(i, j) &#x3D; target;</p>
-<p>​		end</p>
-<p>​	end</p>
-<p>​	% 计算各个蚂蚁的路径距离</p>
-<p>​	Length &#x3D; </p>
-</blockquote>
-</li>
-</ol>
+            <h1><span id="如何能开税率为0的增值税普通发票">如何能开税率为0的增值税普通发票</span></h1><p>完成《上海交通大学开票审批单》的网上填写工作并审核通过后，连同合同或协议复印件一份，提交到财务计划处开票岗办理开票业务。<br>③开票应准备合同原件和复印件各一份。原件供开票审核查看后归还，复印件留财计处存档。军工涉密合同，无需提供合同，需要技装院在开票预约单上进行盖章确认。</p>
+<p>预约开票申请经审批通过后，票据自动发送至申请人邮箱。<br>军工涉密合同、军工免税电子发票（普通发票），无需上传合同，需军工院在开票预约单上盖章签字进行确认作为附件上传。<br>两技合同经过上海市技术市场管理部门认定后，开具电子发票（普通发票）可免税，附件需上传合同和技术认定证明文件；军工合同的开票审批单经过军工院审核盖章签字，开具电子发票（普通发票）可免税，附件上传军工院盖章签字的开票审批单。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jdcw.sjtu.edu.cn/info/1010/1213.htm">https://www.jdcw.sjtu.edu.cn/info/1010/1213.htm</a></p>
+<p><a target="_blank" rel="noopener" href="https://gk.sjtu.edu.cn/phone/view/448">https://gk.sjtu.edu.cn/phone/view/448</a></p>
+<p><img src="/2025/05/17/%E5%A2%9E%E5%80%BC%E7%A8%8E%E6%99%AE%E9%80%9A%E5%8F%91%E7%A5%A8/image-20250517141633503.png" alt="image-20250517141633503"></p>
+<p><a target="_blank" rel="noopener" href="https://mri.sjtu.edu.cn/zn_kygs/437.html">https://mri.sjtu.edu.cn/zn_kygs/437.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jdcw.sjtu.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1021&wbnewsid=3870">https://www.jdcw.sjtu.edu.cn/content.jsp?urltype=news.NewsContentUrl&amp;wbtreeid=1021&amp;wbnewsid=3870</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.seiee.sjtu.edu.cn/xzzx_xzzq_kycx_cat2/983.html">https://www.seiee.sjtu.edu.cn/xzzx_xzzq_kycx_cat2/983.html</a></p>
+<p><img src="/2025/05/17/%E5%A2%9E%E5%80%BC%E7%A8%8E%E6%99%AE%E9%80%9A%E5%8F%91%E7%A5%A8/image-20250517141719230.png" alt="image-20250517141719230"></p>
+<p><a target="_blank" rel="noopener" href="https://www.jdcw.sjtu.edu.cn/1hx201940.pdf">https://www.jdcw.sjtu.edu.cn/1hx201940.pdf</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jdcw.sjtu.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1029&wbnewsid=4630">https://www.jdcw.sjtu.edu.cn/content.jsp?urltype=news.NewsContentUrl&amp;wbtreeid=1029&amp;wbnewsid=4630</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat7/1058.html">https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat7/1058.html</a></p>
+<p><img src="https://www.seiee.sjtu.edu.cn/upload/old_web/xzzx_bszn_kycx_cat7/%E5%BC%80%E7%A5%A8%E6%B5%81%E7%A8%8B.png" alt="img"></p>
 
             
         </div>
@@ -364,279 +212,21 @@
         
         
     </div>
-    <a href="/2023/10/30/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/" class="go-post">阅读全文</a>
+    <a href="/2025/05/17/%E5%A2%9E%E5%80%BC%E7%A8%8E%E6%99%AE%E9%80%9A%E5%8F%91%E7%A5%A8/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/10/29/%E6%AF%8F%E6%97%A5%E7%A7%91%E7%A0%94%E8%AE%B0%E5%BD%95/">
-        <h2 class="post-title">每日科研记录</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/29
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="2023年10月29日"><a href="#2023年10月29日" class="headerlink" title="2023年10月29日"></a>2023年10月29日</h3><p>把握现在，享受当下，提前准备</p>
-<p>先完成，再追求完美</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/29/%E6%AF%8F%E6%97%A5%E7%A7%91%E7%A0%94%E8%AE%B0%E5%BD%95/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/29/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/">
-        <h2 class="post-title">组会记录</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/29
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="2023年10月29日"><a href="#2023年10月29日" class="headerlink" title="2023年10月29日"></a>2023年10月29日</h3><p><strong>下一步目标</strong>：寻找一个好的、新的、简单的、感兴趣的算法进行复现。如排除迷宫算法 (太老了)</p>
-<p><strong>问题1</strong>：看了文献没有收获</p>
-<p>**Re: **批判性地看文献，找出其中隐含的问题。如蒋丹老师的论文 (基于动态蚁群算法的三维管路路径规划，仿真过于简单)、辽宁石油化工大学张乐的论文 (将三维简化为二维)</p>
-<p><strong>问题2</strong>：文献中的栅格数量都较少</p>
-<p>**Re: **栅格实际上是很多的，只是文献只举了简单例子</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/29/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/25/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">
-        <h2 class="post-title">文献阅读</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/25
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="航空发动机外部管路自动敷设研究"><a href="#航空发动机外部管路自动敷设研究" class="headerlink" title="航空发动机外部管路自动敷设研究"></a>航空发动机外部管路自动敷设研究</h3><h3 id="基于智能优化算法的船舶管路智能设计"><a href="#基于智能优化算法的船舶管路智能设计" class="headerlink" title="基于智能优化算法的船舶管路智能设计"></a>基于智能优化算法的船舶管路智能设计</h3><h4 id="一、建立数学模型"><a href="#一、建立数学模型" class="headerlink" title="一、建立数学模型"></a>一、建立数学模型</h4><ol>
-<li>划分设计空间，建立栅格模型——栅格法</li>
-</ol>
-<h3 id="船舶管路智能布局优化设计"><a href="#船舶管路智能布局优化设计" class="headerlink" title="船舶管路智能布局优化设计"></a>船舶管路智能布局优化设计</h3><h3 id="0-研究意义"><a href="#0-研究意义" class="headerlink" title="0. 研究意义"></a>0. 研究意义</h3><h4 id="1-建立模型"><a href="#1-建立模型" class="headerlink" title="1. 建立模型"></a>1. 建立模型</h4><h5 id="1-1-舱室-栅格法"><a href="#1-1-舱室-栅格法" class="headerlink" title="1.1 舱室 (栅格法)"></a>1.1 舱室 (栅格法)</h5><ol>
-<li><p>舱室简化为长方体</p>
-</li>
-<li><p>用栅格法对长方体进行划分</p>
-<p><strong>栅格大小：</strong>考虑管子的半径、管路之间的预留间隙、管路与障碍物以及舱壁之间的间隙</p>
-</li>
-<li><p>对长方体模型进行修正</p>
-</li>
-</ol>
-<h5 id="1-2-障碍物-姿态空间法、包围盒法"><a href="#1-2-障碍物-姿态空间法、包围盒法" class="headerlink" title="1.2 障碍物 (姿态空间法、包围盒法)"></a>1.2 障碍物 (姿态空间法、包围盒法)</h5><ol>
-<li>建立一个或多个规则的长方体将障碍物完全包含</li>
-<li>根据障碍物的固有属性、机械设备的可操作性和维修性来设置</li>
-</ol>
-<h5 id="1-3-管路"><a href="#1-3-管路" class="headerlink" title="1.3 管路"></a>1.3 管路</h5><ul>
-<li>用管路的中心线来代表管路进行布置</li>
-</ul>
-<h4 id="2-智能设计"><a href="#2-智能设计" class="headerlink" title="2. 智能设计"></a>2. 智能设计</h4><p>实现管路的智能设计，有两条路线，一条是使用优化算法，另一条是基于深度学习。</p>
-<h5 id="2-1-基于优化算法"><a href="#2-1-基于优化算法" class="headerlink" title="2.1 基于优化算法"></a>2.1 基于优化算法</h5><table>
-<thead>
-<tr>
-<th>算法</th>
-<th>优点</th>
-<th>局限性</th>
-<th>应用场景</th>
-<th>改进</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>遗传算法 (GA)</td>
-<td>简单通用和鲁棒性强</td>
-<td>收敛速度慢，容易陷入局部最优解</td>
-<td></td>
-<td>与爬山法结合</td>
-</tr>
-<tr>
-<td>蚁群算法</td>
-<td></td>
-<td>运行时间长、搜索效率低、易陷入局部最优解</td>
-<td>旅行商问题（traveling salesman problem，TSP）、二次分配等组合优化问题</td>
-<td>设定动态启发信息和动态步长</td>
-</tr>
-<tr>
-<td>粒子群优化（particle swarm optimization，PSO）算法</td>
-<td>可以得到更多候选优解</td>
-<td>收敛速度慢、 收敛精度不高</td>
-<td></td>
-<td>根据算法迭代次数t自适应非线性调整惯性权重w的更新</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h5 id="2-2-基于深度学习"><a href="#2-2-基于深度学习" class="headerlink" title="2.2 基于深度学习"></a>2.2 基于深度学习</h5><h3 id="汇报"><a href="#汇报" class="headerlink" title="汇报"></a>汇报</h3><h4 id="第一页"><a href="#第一页" class="headerlink" title="第一页"></a>第一页</h4><p>知识驱动的管路敏捷设计与评估</p>
-<p>宁峰峰</p>
-<p>2023年10月29日</p>
-<h4 id="第二页-目录"><a href="#第二页-目录" class="headerlink" title="第二页 目录"></a>第二页 目录</h4><p>研究背景</p>
-<p>主体内容</p>
-<p>总结与思考</p>
-<h4 id="第三页-研究背景"><a href="#第三页-研究背景" class="headerlink" title="第三页 研究背景"></a>第三页 研究背景</h4><ul>
-<li>研究对象：船舶管路系统<ul>
-<li>管系设计是船舶设计的重要内容之一</li>
-<li>良好的管系设计对于船舶安全性、经济性、总体布局的合理性、可操作性、维修及保证船舶各种机械的正常运转和安全航行起着不可替代的作用</li>
-<li>增强我国船舶产品在国际市场上的竞争力意义重大</li>
-</ul>
-</li>
-<li>布局空间结构的复杂性、管路数量众多以及各种设计约束</li>
-<li>船舶管路布局优化设计是在给定的几何、拓扑、技术、规则等约束中求解各种可行管路布置结果的过程</li>
-<li>可扩展至航空发动机、大规模集成电路</li>
-</ul>
-<h4 id="第四页-主体内容"><a href="#第四页-主体内容" class="headerlink" title="第四页 主体内容"></a>第四页 主体内容</h4><p>一、建立模型</p>
-<h5 id="1-1-舱室-栅格法-1"><a href="#1-1-舱室-栅格法-1" class="headerlink" title="1.1 舱室 (栅格法)"></a>1.1 舱室 (栅格法)</h5><ol>
-<li><p>舱室简化为长方体</p>
-</li>
-<li><p>用栅格法对长方体进行划分</p>
-<p><strong>栅格大小：</strong>考虑管子的半径、管路之间的预留间隙、管路与障碍物以及舱壁之间的间隙</p>
-</li>
-<li><p>对长方体模型进行修正</p>
-</li>
-</ol>
-<h5 id="1-2-障碍物-姿态空间法、包围盒法-1"><a href="#1-2-障碍物-姿态空间法、包围盒法-1" class="headerlink" title="1.2 障碍物 (姿态空间法、包围盒法)"></a>1.2 障碍物 (姿态空间法、包围盒法)</h5><ol>
-<li>建立一个或多个规则的长方体将障碍物完全包含</li>
-<li>根据障碍物的固有属性、机械设备的可操作性和维修性来设置</li>
-</ol>
-<h5 id="1-3-管路-1"><a href="#1-3-管路-1" class="headerlink" title="1.3 管路"></a>1.3 管路</h5><ul>
-<li>用管路的中心线来代表管路进行布置</li>
-</ul>
-<h4 id="第五页-主体内容"><a href="#第五页-主体内容" class="headerlink" title="第五页 主体内容"></a>第五页 主体内容</h4><p>二、确定目标函数</p>
-<p><img src="/2023/10/25/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/Users\asus\AppData\Roaming\Typora\typora-user-images\image-20231028215542922.png" alt="image-20231028215542922"></p>
-<p>三、智能设计</p>
-<p>四、试验验证</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/25/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/25/%E2%80%9C%E5%85%88%E8%BF%9B%E8%AF%95%E9%AA%8C%E4%B8%8E%E6%B5%8B%E8%AF%95%E9%A2%86%E5%9F%9F%E2%80%9D/">
-        <h2 class="post-title">“先进试验与测试领域”</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/25
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="咨询"><a href="#咨询" class="headerlink" title="咨询"></a>咨询</h3><p><strong>学长 23级直博</strong></p>
-<p><strong>小红书Hz_arrebol 北航23级硕士</strong></p>
-<h3 id="领域"><a href="#领域" class="headerlink" title="领域"></a>领域</h3><p>[航空测试技术的任务与作用_知乎](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266797227">航空测试技术的任务与作用 - 知乎 (zhihu.com)</a>)</p>
-<p><a target="_blank" rel="noopener" href="http://gr.xjtu.edu.cn/c/document_library/get_file?p_l_id=2373218&folderId=2666993&name=DLFE-126233.pdf">航空发动机先进试验与测试</a></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/25/%E2%80%9C%E5%85%88%E8%BF%9B%E8%AF%95%E9%AA%8C%E4%B8%8E%E6%B5%8B%E8%AF%95%E9%A2%86%E5%9F%9F%E2%80%9D/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/21/%E9%87%91%E5%B1%9E%E5%88%87%E5%89%8A%E6%9C%BA%E5%BA%8A%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA/">
-        <h2 class="post-title">金属切削机床设计的基本理论</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/21
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/21/%E9%87%91%E5%B1%9E%E5%88%87%E5%89%8A%E6%9C%BA%E5%BA%8A%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/21/%E8%AE%BE%E8%AE%A1%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%AB%9E%E4%BA%89%E5%8A%9B%E7%A0%94%E8%AE%A8%E4%BC%9A-231021/">
-        <h2 class="post-title">设计科学与设计竞争力研讨会_231021</h2>
+    <a href="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/">
+        <h2 class="post-title">HyperMesh for Nastran 频响分析</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E5%85%B6%E4%BB%96/">
+            <a href="/categories/%E4%BB%BF%E7%9C%9F/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                其他
+                仿真
             </a>
         </span>
         
@@ -644,7 +234,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/10/21
+            2025/5/4
         </span>
         
         
@@ -652,156 +242,90 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>总书记指出，整合科技创新资源，引领发展战略性新兴产业和未来产业，加快形成新质生产力。</p>
-<p>设计科学的第一个层面：哲学、方法学</p>
-<p>复杂、交叉、基础、行业属性明显</p>
-<p>科学、应用</p>
-<p>战略层面的抓手：顺应国家大局，新质生产力（如生物质能源</p>
-<p>创新始于设计。盾构机是模仿的</p>
-<p>第二个抓手：解决行业或国家痛点</p>
-<p>主要矛盾：设计工具</p>
-<p>卡脖子—-&gt;设计科学出现</p>
-<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>新名词：哲学之下、科学之上</p>
-<p>内容与帽子</p>
-<p>理论不是产品支撑的</p>
-<p>教育要尽快扭转功利主义</p>
-<p>设计方法学：浙大黄教授</p>
-<p>怎么提高设计的竞争力——设计科学研究的内容和解决的问题</p>
-<p>设计的范围：</p>
-<p>中国的现代化不等于西方化</p>
-<p>设计不只靠自然科学，还有社会科学</p>
-<h2 id="AI与设计科学框架"><a href="#AI与设计科学框架" class="headerlink" title="AI与设计科学框架"></a>AI与设计科学框架</h2><p>科学研究经历了：经验、理论、计算、数据驱动、AI范式</p>
-<p>AI for science</p>
-<p>AI for design</p>
+            <p><a target="_blank" rel="noopener" href="https://www.slideshare.net/shaileshpatil524381/frequency-response-analysis-of-plate-using-nastran-sol108">https://www.slideshare.net/shaileshpatil524381/frequency-response-analysis-of-plate-using-nastran-sol108</a></p>
+<hr>
+<!-- toc -->
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/21/%E8%AE%BE%E8%AE%A1%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%AB%9E%E4%BA%89%E5%8A%9B%E7%A0%94%E8%AE%A8%E4%BC%9A-231021/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/20/%E5%A4%A7%E5%9B%9B%E8%A7%84%E5%88%92/">
-        <h2 class="post-title">大四规划</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p><strong>做自己想做的事，见自己想见的人，成为想成为的自己</strong></p>
-<p>做自己之前想做而没做的事情：动漫、电影、电视剧、综艺、小说、旅游、游戏</p>
-<p>导师与课题组：研究方向、确定课题、专业书籍、阅读论文</p>
-<p>交流：研究方向、课题项目、对你的定位、对你研究生阶段的规划与安排，期间你也要有效表达自己的观点与想法</p>
-<p>毕业设计</p>
-<p>课程</p>
-<p>熟悉将来环境</p>
-<p>了解专业前景、就业情况、发展</p>
-<p>英语：阅读、写作、听力、口语、单词、GT</p>
-<p>知识</p>
-<p>三维绘图、软件、剪辑编程</p>
-<p>驾照</p>
-<p>money</p>
-<p>实习</p>
-<p>习惯</p>
-<p>总结、分享</p>
-<p>爱好：阅读、锻炼、游泳、网球、视频、练字、音乐</p>
-<p>学习吧，从书里，从他人身上。为自己，为真正的苍生万民，不为虚名，不为成绩。</p>
-<p>学术太难了。真的。即使你拿了诺贝尔奖，也逃不过冥冥中的历史和真理永远沉默的凝视。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/20/%E5%A4%A7%E5%9B%9B%E8%A7%84%E5%88%92/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/19/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96/">
-        <h2 class="post-title">深度学习——基于梯度的优化</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                深度学习
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/19
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="神经网络的“引擎”：基于梯度的优化"><a href="#神经网络的“引擎”：基于梯度的优化" class="headerlink" title="神经网络的“引擎”：基于梯度的优化"></a>神经网络的“引擎”：基于梯度的优化</h2><p>对于第一个模型示例，每个神经层都对输入数据进行如下变换：</p>
-<blockquote>
-<p>output &#x3D; relu(dot(input, W) + b)</p>
-</blockquote>
-<p>在这个表达式中，W 和 b 均为该层的属性，被称为该层的**权重 (weight) **或可训练参数 (trainable parameter)，分别对应属性 kernel 和  bias。这些权重包含模型从训练数据中学到的信息。</p>
-<p>一开始，这些权重矩阵取较小的随机值，这一步叫作**随机初始化 (random initialization)<strong>。下一步则是根据反馈信号逐步调节这些权重。这个逐步调节的过程叫作</strong>训练 (training)**，也就是机器学习中的“学习”过程。</p>
-<p>上述过程发生在一个训练循环 (training loop) 内，其具体流程如下。在一个循环中重复下列步骤，直到损失值变得足够小。</p>
-<p>​	(1) 抽取训练样本 x 和对应目标 y_true 组成的一个数据批量。</p>
-<p>​	(2) 在 x 上运行模型 (这一步叫作前向传播，forward pass)，得到预测值 y_pred。</p>
-<p>​	(3) 计算模型在这批数据上的损失值，用于衡量 y_pred 和 y_true 之间的差距。</p>
-<p>​	(4) 更新模型的所有权重，以略微减小模型在这批数据上的损失值。</p>
-<blockquote>
-<p>loss_value &#x3D; f(W)</p>
-<p>张量 grad(loss_value, W0) —— f 在 W0 点的导数，其形状与W相同</p>
-<p>每个元素 grad(loss_value, W0)[i, j] ——当 W0[i, j] 发生变化时 loss_value 变化的方向和大小</p>
-<p>张量 grad(loss_value, W0) ——函数 f(W) &#x3D; loss_value 在 W0 处的梯度，也叫作 “loss_value 相对于 W 在 W0 附近的梯度”</p>
-</blockquote>
-<p><strong>小批量随机梯度下降 (mini-batch stochastic gradient descent，小批量 SGD)</strong></p>
-<p>​	(1) 抽取训练样本 x 和对应目标 y_true 组成的一个数据批量</p>
-<p>​	(2) 在 x 上运行模型，得到预测值 y_pred，这一步叫作前向传播</p>
-<p>​	(3) 计算模型在这批数据上的损失值，用于衡量 y_pred 和 y_true 之间的差距</p>
-<p>​	(4) 计算损失相对于模型参数的梯度，这一步叫作<strong>反向传播 (backward pass)</strong></p>
-<p>​	(5) 将参数沿着梯度的反方向移动一小步，比如 W -&#x3D; learning_rate * gradient，从而使这批数据上的损失值减小一些，<strong>学习率 (learning_rate)</strong> 是一个调节梯度下降“速度”的标量因子</p>
-<p><strong>小批量 SGD 的变体</strong></p>
-<ol>
-<li>真 SGD (true SGD)：每次迭代只抽取一个样本和目标</li>
-<li>批量梯度下降 (batch gradient descent)：每次迭代都在所有数据上运行</li>
-<li>优化方法 (optimization method) 或优化器 (optimizer)：<ol>
-<li>带动量的 SGD、Adagrad、RMSprop 等</li>
-<li>它们的不同之处在于，计算下一次权重更新时还要考虑上一次权重更新，而不是仅考虑当前的梯度值</li>
-<li>动量解决了 SGD 的两个问题：收敛速度和局部极小值</li>
-</ol>
+<ul>
+<li><a href="#1-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90">1 频响分析</a><ul>
+<li><a href="#11-%E6%A1%88%E4%BE%8B">1.1 案例</a></li>
+</ul>
 </li>
-</ol>
-<p><strong>反向传播算法 (backpropagation algorithm)</strong></p>
-<p><strong>链式法则 (chain rule)</strong></p>
-<blockquote>
-<p>grad(y, x) &#x3D;&#x3D; grad(y, x1) * grad(x1, x)</p>
-</blockquote>
-<p><strong>用计算图 (computation graph) 进行自动微分</strong></p>
-<p><strong>TensorFlow 的梯度带</strong></p>
+<li><a href="#2-%E6%B5%81%E7%A8%8B">2 流程</a><ul>
+<li><a href="#21-%E5%BB%BA%E7%AB%8B%E7%BD%91%E6%A0%BC">2.1 建立网格</a><ul>
+<li><a href="#211-%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9">2.1.1 创建节点</a></li>
+<li><a href="#212-%E5%88%9B%E5%BB%BA%E7%BD%91%E6%A0%BC">2.1.2 创建网格</a></li>
+<li><a href="#213-%E6%B8%85%E9%99%A4%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9">2.1.3 清除临时节点</a></li>
+</ul>
+</li>
+<li><a href="#22-%E5%88%9B%E5%BB%BA%E6%9D%90%E6%96%99">2.2 创建材料</a></li>
+<li><a href="#23-%E5%88%9B%E5%BB%BA%E5%B1%9E%E6%80%A7">2.3 创建属性</a></li>
+<li><a href="#24-%E6%9B%B4%E6%96%B0%E7%BB%84%E4%BB%B6">2.4 更新组件</a></li>
+<li><a href="#25-%E6%A3%80%E6%9F%A5%E6%9D%90%E6%96%99%E5%92%8C%E5%B1%9E%E6%80%A7">2.5 检查材料和属性</a></li>
+<li><a href="#26-%E8%AE%BE%E7%BD%AE%E7%BA%A6%E6%9D%9F">2.6 设置约束</a></li>
+<li><a href="#27-%E8%AE%BE%E7%BD%AE%E6%BF%80%E5%8A%B1">2.7 设置激励</a><ul>
+<li><a href="#271-%E6%96%BD%E5%8A%A0%E5%8A%9B-%E5%A4%A7%E5%B0%8F-%E6%96%B9%E5%90%91%E4%B8%8E%E4%BD%9C%E7%94%A8%E7%82%B9">2.7.1 施加力 (大小、方向与作用点)</a></li>
+<li><a href="#272-%E8%AE%BE%E7%BD%AE%E9%A2%91%E7%8E%87%E8%8C%83%E5%9B%B4">2.7.2 设置频率范围</a></li>
+<li><a href="#273-%E8%AE%BE%E7%BD%AE%E5%8A%9B%E7%9A%84%E9%A2%91%E8%B0%B1-%E5%B9%85%E9%A2%91">2.7.3 设置力的频谱 (幅频)</a></li>
+<li><a href="#274-%E9%9B%86%E6%88%90%E5%8A%A8%E6%80%81%E8%BD%BD%E8%8D%B7">2.7.4 集成动态载荷</a></li>
+</ul>
+</li>
+<li><a href="#28-%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9%E9%9B%86%E5%90%88%E7%94%A8%E4%BA%8E%E7%BB%98%E5%88%B6%E9%A2%91%E5%93%8D%E6%9B%B2%E7%BA%BF">2.8 创建节点集合用于绘制频响曲线</a></li>
+<li><a href="#29-%E5%88%9B%E5%BB%BA%E8%BD%BD%E8%8D%B7%E6%AD%A5">2.9 创建载荷步</a></li>
+<li><a href="#210-%E9%85%8D%E7%BD%AE%E6%8E%A7%E5%88%B6%E5%8D%A1%E7%89%87">2.10 配置控制卡片</a><ul>
+<li><a href="#2101-sol">2.10.1 SOL</a></li>
+<li><a href="#2102-param">2.10.2 PARAM</a></li>
+<li><a href="#2103-title">2.10.3 TITLE</a></li>
+</ul>
+</li>
+<li><a href="#211-%E5%AF%BC%E5%87%BA-bdf-%E6%B1%82%E8%A7%A3%E6%96%87%E4%BB%B6">2.11 导出 bdf 求解文件</a></li>
+<li><a href="#212-%E4%BD%BF%E7%94%A8-nastran-%E6%B1%82%E8%A7%A3">2.12 使用 Nastran 求解</a></li>
+<li><a href="#213-%E5%8F%AF%E8%A7%86%E5%8C%96">2.13 可视化</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%BB%93%E6%9E%9C">3 结果</a><ul>
+<li><a href="#31-%E5%BA%94%E5%8A%9B">3.1 应力</a><ul>
+<li><a href="#311-f168-hz">3.1.1 f&#x3D;168 Hz</a></li>
+<li><a href="#312-f407-hz">3.1.2 f&#x3D;407 Hz</a></li>
+</ul>
+</li>
+<li><a href="#32-%E9%A2%91%E5%93%8D%E6%9B%B2%E7%BA%BF">3.2 频响曲线</a></li>
+</ul>
+</li>
+<li><a href="#4-%E5%85%B6%E4%BB%96">4 其他</a><ul>
+<li><a href="#41-%E5%9F%BA%E4%BA%8E%E6%A8%A1%E6%80%81%E5%8F%A0%E5%8A%A0%E6%B1%82%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94-freq-resp-modal">4.1 基于模态叠加求频率响应 freq. Resp (modal)</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-频响分析">1 频响分析</span></h1><h2><span id="11-案例">1.1 案例</span></h2><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/case.png"></p>
+<h1><span id="2-流程">2 流程</span></h1><h2><span id="21-建立网格">2.1 建立网格</span></h2><h3><span id="211-创建节点">2.1.1 创建节点</span></h3><p>Geom–&gt;nodes–&gt;(0, 0, 0)–&gt;create</p>
+<h3><span id="212-创建网格">2.1.2 创建网格</span></h3><p>2 D–&gt;planes–&gt;square–&gt;z-axis，选中该节点–&gt;mesh, dele surf–&gt;size&#x3D;100–&gt;create</p>
+<h3><span id="213-清除临时节点">2.1.3 清除临时节点</span></h3><h2><span id="22-创建材料">2.2 创建材料</span></h2><h2><span id="23-创建属性">2.3 创建属性</span></h2><h2><span id="24-更新组件">2.4 更新组件</span></h2><h2><span id="25-检查材料和属性">2.5 检查材料和属性</span></h2><h2><span id="26-设置约束">2.6 设置约束</span></h2><h2><span id="27-设置激励">2.7 设置激励</span></h2><h3><span id="271-施加力-大小-方向与作用点">2.7.1 施加力 (大小、方向与作用点)</span></h3><p>Analysis–&gt;constrains–&gt;create–&gt;选中节点–&gt;勾选 dof 3&#x3D;1–&gt;DAREA–&gt;create</p>
+<h3><span id="272-设置频率范围">2.7.2 设置频率范围</span></h3><p>Load Collectors–&gt;create–&gt;freq，FREQi–&gt;create&#x2F;edit–&gt;勾选 FERQ1–&gt;F1&#x3D;1，DF&#x3D;1，NDF&#x3D;1000–&gt;return<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/FREQ1.png"></p>
+<h3><span id="273-设置力的频谱-幅频">2.7.3 设置力的频谱 (幅频)</span></h3><p>Ctrl F–&gt;搜索 tabled 1–&gt;回车–&gt;填入 (0, 1)，(1000, 1)<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/tabled1.png"><br><code>对于 HyperMesh 2020，TABLED1 无法在 Load Collectors 中找到，需要在 Curves 中设置，可参考：</code></p>
+<p><a target="_blank" rel="noopener" href="https://community.altair.com/discussion/493/i-cant-find-tabled1-in-loadcollector-hypermesh-2020-1-optistruct#:~:text=In%20the%202020%20version%20the%20Tabled1%20entry%20is">https://community.altair.com/discussion/493/i-cant-find-tabled1-in-loadcollector-hypermesh-2020-1-optistruct#:~:text=In%20the%202020%20version%20the%20Tabled1%20entry%20is</a></p>
+<h3><span id="274-集成动态载荷">2.7.4 集成动态载荷</span></h3><p>Load Collectors–&gt;create–&gt;rload，RLOAD 2–&gt;create&#x2F;edit<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/RLOAD2.png"></p>
+<p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/rload2_setup.png"></p>
+<ul>
+<li>RLOAD 2 定义了一种与频率相关的动态载荷的形式，用于频率响应分析： $$P(f)&#x3D;A*B(f)*e^{i[φ(f)+θ−2πfτ]}$$</li>
+<li>EXCITEID——定义 A 的 DAREA</li>
+<li>TB——通过 TABLED 1 给出 B(f)</li>
+<li>参考：<a target="_blank" rel="noopener" href="https://2021.help.altair.com/2021/hwsolvers/os/topics/solvers/os/rload2_bulk_r.htm">https://2021.help.altair.com/2021/hwsolvers/os/topics/solvers/os/rload2_bulk_r.htm</a></li>
+</ul>
+<h2><span id="28-创建节点集合用于绘制频响曲线">2.8 创建节点集合用于绘制频响曲线</span></h2><p>Analysis–&gt;entity sets–&gt;node_set–&gt;SET–&gt;选中四个节点–&gt;create<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/node_set.png"></p>
+<h2><span id="29-创建载荷步">2.9 创建载荷步</span></h2><p>Analysis–&gt;loadsteps–&gt;frequency_response_analysis–&gt;freq.resp(direct)–&gt;SPC，FREQ，DLOAD–&gt;create<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/loadsteps.png"></p>
+<p>edit–&gt;勾选 OUTPUT，勾选 DISPLACEMENT 和 STRESS，按照下图设置<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/output.png"></p>
+<h2><span id="210-配置控制卡片">2.10 配置控制卡片</span></h2><p>Analysis–&gt;control cards：<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/control_cards.png"></p>
+<h3><span id="2101-sol">2.10.1 SOL</span></h3><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/SOL.png"></p>
+<h3><span id="2102-param">2.10.2 PARAM</span></h3><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/PARAM.png"></p>
+<h3><span id="2103-title">2.10.3 TITLE</span></h3><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/TITLE.png"></p>
+<h2><span id="211-导出-bdf-求解文件">2.11 导出 bdf 求解文件</span></h2><h2><span id="212-使用-nastran-求解">2.12 使用 Nastran 求解</span></h2><h2><span id="213-可视化">2.13 可视化</span></h2><p>打开 HyperGraph 2D–&gt;Build Plots–&gt;读取 pch 文件中的数据–&gt;选择 (蓝色高亮部分)–&gt;应用<br><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/hypergraph_setup.png"></p>
+<h1><span id="3-结果">3 结果</span></h1><h2><span id="31-应力">3.1 应力</span></h2><h3><span id="311-fx3d168-hz">3.1.1 f&#x3D;168 Hz</span></h3><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/stress_108.png"></p>
+<h3><span id="312-fx3d407-hz">3.1.2 f&#x3D;407 Hz</span></h3><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/stress_407.png"></p>
+<h2><span id="32-频响曲线">3.2 频响曲线</span></h2><p><img src="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/points.png"></p>
+<h1><span id="4-其他">4 其他</span></h1><h2><span id="41-基于模态叠加求频率响应-freq-resp-modal">4.1 基于模态叠加求频率响应 freq. Resp (modal)</span></h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/621743095">https://zhuanlan.zhihu.com/p/621743095</a><br><a target="_blank" rel="noopener" href="https://www.docin.com/p-844540900.html">https://www.docin.com/p-844540900.html</a></p>
 
             
         </div>
@@ -816,30 +340,35 @@
         
         <span class="tag">
             
-            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="color: #00bcd4">深度学习</a>
+            <a href="/tags/HyperMesh/" style="color: #00a596">HyperMesh</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E6%A2%AF%E5%BA%A6/" style="color: #ff7d73">梯度</a>
+            <a href="/tags/Nastran/" style="color: #ff7d73">Nastran</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/" style="color: #ffa2c4">频响分析</a>
         </span>
         
     </div>
-    <a href="/2023/10/19/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96/" class="go-post">阅读全文</a>
+    <a href="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/10/15/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E8%8E%B7%E5%A5%96%E6%83%85%E5%86%B5/">
-        <h2 class="post-title">历年毕业设计获奖情况</h2>
+    <a href="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/">
+        <h2 class="post-title">HyperMesh for Nastran 重力分析</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E5%85%B6%E4%BB%96/">
+            <a href="/categories/%E4%BB%BF%E7%9C%9F/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                其他
+                仿真
             </a>
         </span>
         
@@ -847,7 +376,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/10/15
+            2025/5/2
         </span>
         
         
@@ -855,346 +384,813 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h2 id="20届校企合作毕业设计"><a href="#20届校企合作毕业设计" class="headerlink" title="20届校企合作毕业设计"></a><a target="_blank" rel="noopener" href="https://me.sjtu.edu.cn/bkjx/tg_news/302.html">20届校企合作毕业设计</a></h2><p>本届校企合作毕业设计共132个项目，由400名学生，112名交大及企业指导教师历时6个月共同完成，项目获得了75家国内外企业的资助。</p>
-<p><strong>附：获奖项目名单</strong></p>
-<p><strong>一、“优秀设计奖”获奖名单</strong></p>
-<table>
-<thead>
-<tr>
-<th>项目名称</th>
-<th>赞助企业</th>
-<th>指导老师</th>
-<th>获得奖项</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>大载重多旋翼无人机设计与优化</td>
-<td>中国人民解放军海军军医大学</td>
-<td>张执南</td>
-<td>一等奖</td>
-</tr>
-<tr>
-<td>车用燃料电池空压机气动设计与性能研究</td>
-<td>上海发电设备成套设计院有限公司</td>
-<td>王彤</td>
-<td>一等奖</td>
-</tr>
-<tr>
-<td>仿生尺蠖软体爬行机器人设计</td>
-<td>上海节卡机器人科技有限公司</td>
-<td>谷国迎</td>
-<td>二等奖</td>
-</tr>
-<tr>
-<td>基于可延展型传感阵列的触觉手套研发</td>
-<td>复旦大学附属华山医院</td>
-<td>于随然</td>
-<td>二等奖</td>
-</tr>
-<tr>
-<td>复杂地形下智能行走小车的设计分析与制作</td>
-<td>上汽泛亚汽车技术中心</td>
-<td>孟祥慧</td>
-<td>二等奖</td>
-</tr>
-<tr>
-<td>基于视觉的平衡轴铁屑缠绕的自动识别及其抓取机器人控制系统</td>
-<td>上汽大众汽车有限公司</td>
-<td>施光林</td>
-<td>三等奖</td>
-</tr>
-<tr>
-<td>精准控温加湿及药液雾化二氧化碳气腹装置设计</td>
-<td>上海念通医疗科技有限公司</td>
-<td>盛鑫军</td>
-<td>三等奖</td>
-</tr>
-<tr>
-<td>基于激光主动配准的大场景高精度测量系统开发</td>
-<td>上海智能制造功能平台有限公司</td>
-<td>陈根良</td>
-<td>三等奖</td>
-</tr>
-<tr>
-<td>多物理多尺度耦合平台研发及其在新型核能系统中的应用研究</td>
-<td>中国核动力研究设计院</td>
-<td>张滕飞</td>
-<td>三等奖</td>
-</tr>
-<tr>
-<td>C919大飞机总装线物流系统仿真与优化</td>
-<td>上海飞机制造有限公司</td>
-<td>陈璐</td>
-<td>三等奖</td>
-</tr>
-<tr>
-<td>融合电化学与数据驱动的电动汽车电池管理技术研发</td>
-<td>上汽捷能汽车技术有限公司</td>
-<td>张希</td>
-<td>优胜奖</td>
-</tr>
-<tr>
-<td>航空煤油液滴蒸发的彩虹成像多参数测量研究</td>
-<td>中国航发商用航空发动机有限责任公司</td>
-<td>李玉阳</td>
-<td>优胜奖</td>
-</tr>
-<tr>
-<td>基于车载互联的大数据挖掘和应用</td>
-<td>上汽大众汽车有限公司</td>
-<td>周耀明</td>
-<td>优胜奖</td>
-</tr>
-<tr>
-<td>压缩机冷却器流场数值分析</td>
-<td>IHI寿力压缩技术（苏州）有限公司</td>
-<td>彭迪</td>
-<td>优胜奖</td>
-</tr>
-<tr>
-<td>基于视觉的喷丝板检测机器人系统设计</td>
-<td>无锡南方声学工程有限公司</td>
-<td>陶建峰</td>
-<td>优胜奖</td>
-</tr>
-<tr>
-<td>全场景深交互智能管家机器猫</td>
-<td>广州高新兴机器人有限公司</td>
-<td>贡亮</td>
-<td>优胜奖</td>
-</tr>
-</tbody></table>
-<p><strong>二、“最佳展示奖”获奖名单</strong>  </p>
-<table>
-<thead>
-<tr>
-<th>项目名称</th>
-<th>赞助企业</th>
-<th>指导教师</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>新型材料与热力循环在车辆节能环保技术中的应用</td>
-<td>上海领晟制冷科技有限公司</td>
-<td>王丽伟</td>
-</tr>
-<tr>
-<td>单旋流模型燃烧室低温低压点火过程的试验与仿真研究</td>
-<td>中国航发商用航空发动机有限责任公司</td>
-<td>高怡</td>
-</tr>
-<tr>
-<td>压缩机冷却器流场数值分析</td>
-<td>IHI寿力压缩技术（苏州）有限公司</td>
-<td>彭迪</td>
-</tr>
-<tr>
-<td>二自由度二维翼型非线性气弹稳定性分析</td>
-<td>上海允升机电设备有限公司</td>
-<td>吴亚东</td>
-</tr>
-<tr>
-<td>无人机燃料电池系统开发与控制策略</td>
-<td>上海氢晨新能源科技有限公司</td>
-<td>易培云</td>
-</tr>
-<tr>
-<td>C919大飞机总装线物流系统仿真与优化</td>
-<td>上海飞机制造有限公司</td>
-<td>陈璐</td>
-</tr>
-<tr>
-<td>智能化大数据维修平台的开发和研究</td>
-<td>上汽大众汽车有限公司</td>
-<td>夏唐斌</td>
-</tr>
-<tr>
-<td>Design a light-weight power-dense motor</td>
-<td>多伦多大学</td>
-<td>余海东</td>
-</tr>
-<tr>
-<td>动力电池关键制造工艺设计及铝合金电池壳体焊接工艺仿真优化</td>
-<td>上汽大众汽车有限公司</td>
-<td>何霁</td>
-</tr>
-<tr>
-<td>全场景深交互智能管家机器猫</td>
-<td>广州高新兴机器人有限公司</td>
-<td>贡亮</td>
-</tr>
-<tr>
-<td>岸桥装备关键部件智能健康评估系统</td>
-<td>上海朋禾智能科技有限公司</td>
-<td>黄亦翔</td>
-</tr>
-<tr>
-<td>大载重多旋翼无人机设计与优化</td>
-<td>中国人民解放军海军军医大学</td>
-<td>张执南</td>
-</tr>
-<tr>
-<td>仿生尺蠖软体爬行机器人设计</td>
-<td>上海节卡机器人科技有限公司</td>
-<td>谷国迎</td>
-</tr>
-<tr>
-<td>核电厂安全壳内壁目视检查机器人远程操控与跟踪研发</td>
-<td>核星核电科技海盐有限公司</td>
-<td>郭为忠</td>
-</tr>
-<tr>
-<td>精准控温加湿及药液雾化二氧化碳气腹装置设计</td>
-<td>上海念通医疗科技有限公司</td>
-<td>盛鑫军</td>
-</tr>
-<tr>
-<td>核电厂危险气体主动嗅探智能车设计</td>
-<td>霍尼韦尔（中国）有限公司</td>
-<td>王德忠</td>
-</tr>
-<tr>
-<td>基于视觉的喷丝板检测机器人系统设计</td>
-<td>无锡南方声学工程有限公司</td>
-<td>陶建峰</td>
-</tr>
-<tr>
-<td>考虑舒适度与安全裕量的自动驾驶智能决策技术开发与验证</td>
-<td>上汽通用五菱汽车股份有限公司</td>
-<td>张希</td>
-</tr>
-</tbody></table>
-<p><strong>三、“最受欢迎奖”获奖名单</strong></p>
-<table>
-<thead>
-<tr>
-<th>项目名称</th>
-<th>赞助企业</th>
-<th>指导教师</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>新一代机械泵入式比例混合装置</td>
-<td>江森自控</td>
-<td>韩东</td>
-</tr>
-<tr>
-<td>单旋流模型燃烧室低温低压点火过程的试验与仿真研究</td>
-<td>中国航发商用航空发动机有限责任公司</td>
-<td>高怡</td>
-</tr>
-<tr>
-<td>基于燃料电池流场设计的水热管理研究</td>
-<td>上海唐锋能源科技有限公司</td>
-<td>闫晓晖</td>
-</tr>
-<tr>
-<td>通风座椅CFD模拟和试验方法研究Research on CFD simulation and experimental test of vehicle seat ventilation</td>
-<td>上汽大众汽车有限公司</td>
-<td>陈江平</td>
-</tr>
-<tr>
-<td>动力电池关键制造工艺设计及铝合金电池壳体焊接工艺仿真优化</td>
-<td>上汽大众汽车有限公司</td>
-<td>何霁</td>
-</tr>
-<tr>
-<td>基于视觉的喷丝板检测机器人系统设计</td>
-<td>无锡南方声学工程有限公司</td>
-<td>陶建峰</td>
-</tr>
-</tbody></table>
-<p><strong>四、“优秀指导教师”获奖名单</strong></p>
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>曹其新</td>
-<td>贡亮</td>
-<td>林艳萍</td>
-<td>徐凯</td>
-<td>谷国迎</td>
-</tr>
-<tr>
-<td>柴翔</td>
-<td>郭为忠</td>
-<td>苗玉彬</td>
-<td>尹俊连</td>
-<td>于随然</td>
-</tr>
-<tr>
-<td>陈璐</td>
-<td>胡永祥</td>
-<td>任明俊</td>
-<td>张希</td>
-<td>孟祥慧</td>
-</tr>
-<tr>
-<td>代彦军</td>
-<td>蒋峰景</td>
-<td>沈彬</td>
-<td>张执南</td>
-<td>盛鑫军</td>
-</tr>
-<tr>
-<td>范秀敏</td>
-<td>李淑慧</td>
-<td>施光林</td>
-<td>章俊良</td>
-<td>陈根良</td>
-</tr>
-<tr>
-<td>付庄</td>
-<td>李永兵</td>
-<td>王丽伟</td>
-<td>周明东</td>
-<td>张滕飞</td>
-</tr>
-<tr>
-<td>高怡</td>
-<td>梁庆华</td>
-<td>吴建华</td>
-<td>王彤</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="21届校企合作毕业设计"><a href="#21届校企合作毕业设计" class="headerlink" title="21届校企合作毕业设计"></a><a target="_blank" rel="noopener" href="https://me.sjtu.edu.cn/news/70821.html">21届校企合作毕业设计</a></h2><p>本届共展出150项作品，由445名学生、126名交大指导教师以及123位企业指导老师历时近6个月共同完成，项目分别来自于上汽大众、DANA、英格索兰、上海电气等86家国内外知名企业。</p>
-<p>经指导教师和企业嘉宾的共同评审，项目展最终评选出“优秀设计”一等奖2项、二等奖3项、三等奖5项，优胜奖5项，最佳展示奖14项，最具人气奖10项。</p>
-<p>学院自2017年起对毕业设计（论文）进行试点改革，毕业设计项目均由企业提出并提供资助，借鉴全球化企业团队合作模式，每个项目由2-4名学生组成团队，在企业导师与校内导师的共同指导下，协作完成项目。</p>
-<p><strong>附：获奖项目名单</strong></p>
-<p><strong>一、优秀设计奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20210531/20210531182237.png" alt="img"></p>
-<p><strong>二、最具人气奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20210531/20210531182307.png" alt="img"></p>
-<p><strong>三、最佳展示奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20210531/20210531182346.png" alt="img"></p>
-<h4 id="22届校企合作毕业设计"><a href="#22届校企合作毕业设计" class="headerlink" title="22届校企合作毕业设计"></a><a target="_blank" rel="noopener" href="https://me.sjtu.edu.cn/cooperation_dynamics/72822.html">22届校企合作毕业设计</a></h4><p>本届校企合作毕业设计共147个项目，由413名学生、268名交大及企业指导教师历时6个月共同完成，项目获得了95家国内外企业的资助。</p>
-<p><strong>附：获奖项目名单</strong></p>
-<p><strong>一、“优秀设计奖”获奖名单</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20220614/20220614134225.png" alt="img"></p>
-<p><strong>二、“最佳展示奖”获奖名单</strong></p>
-<p><strong><img src="https://me.sjtu.edu.cn/upload/image/20220614/20220614134241.png" alt="img"></strong> </p>
-<p><strong>三、“最具人气奖”获奖名单</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20220614/20220614134111.png" alt="img"></p>
-<h2 id="23届毕业设计"><a href="#23届毕业设计" class="headerlink" title="23届毕业设计"></a><a target="_blank" rel="noopener" href="https://me.sjtu.edu.cn/bkjx/tg_news/2678.html">23届毕业设计</a></h2><p>本届校企合作毕业设计共有141个项目，由416名学生、133名交大及企业指导教师历时6个月共同完成，项目获得了86家国内外企业的资助。项目展最终评选出“优秀设计”一等奖3项、二等奖5项、三等奖7项、优胜奖7项、最受欢迎奖10项、最具人气奖10项，以及优秀指导教师奖27名。</p>
-<p>附：获奖项目名单</p>
-<p><strong>一、优秀设计奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20230529/20230529091218.png" alt="img"></p>
-<p><strong>二、最受欢迎奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20230529/20230529091242.png" alt="img"></p>
-<p><strong>三、最具人气奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20230529/20230529091305.png" alt="img"></p>
-<p><strong>四、最佳展示奖</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20230529/20230529091323.png" alt="img"></p>
-<p><strong>五、优秀指导教师</strong></p>
-<p><img src="https://me.sjtu.edu.cn/upload/image/20230529/20230529091343.png" alt="img"></p>
+            <hr>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=r6JJsdOTm5g&t=1677s">https://www.youtube.com/watch?v=r6JJsdOTm5g&amp;t=1677s</a></p>
+<hr>
+<!-- toc -->
+
+<ul>
+<li><a href="#1-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90">1 重力分析</a><ul>
+<li><a href="#11-%E5%AE%9A%E4%B9%89">1.1 定义</a></li>
+<li><a href="#12-%E4%BD%9C%E7%94%A8">1.2 作用</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%B5%81%E7%A8%8B">2 流程</a><ul>
+<li><a href="#21-%E6%89%93%E5%BC%80-hypermesh%E9%80%89%E6%8B%A9-nastran">2.1 打开 HyperMesh，选择 Nastran</a></li>
+<li><a href="#22-%E5%BB%BA%E7%AB%8B%E7%BD%91%E6%A0%BC">2.2 建立网格</a></li>
+<li><a href="#23-%E5%88%9B%E5%BB%BA%E6%9D%90%E6%96%99">2.3 创建材料</a></li>
+<li><a href="#24-%E5%88%9B%E5%BB%BA%E5%B1%9E%E6%80%A7">2.4 创建属性</a></li>
+<li><a href="#25-%E6%9B%B4%E6%96%B0%E7%BB%84%E4%BB%B6">2.5 更新组件</a></li>
+<li><a href="#26-%E6%A3%80%E6%9F%A5%E6%9D%90%E6%96%99%E4%B8%8E%E5%B1%9E%E6%80%A7">2.6 检查材料与属性</a></li>
+<li><a href="#27-%E8%AE%BE%E7%BD%AE%E7%BA%A6%E6%9D%9F">2.7 设置约束</a></li>
+<li><a href="#28-%E5%BB%BA%E7%AB%8B%E8%B4%A8%E7%82%B9">2.8 建立质点</a><ul>
+<li><a href="#281-%E5%BB%BA%E7%AB%8B%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9">2.8.1 建立临时节点</a></li>
+<li><a href="#282-%E5%88%9B%E5%BB%BA%E5%88%9A%E4%BD%93">2.8.2 创建刚体</a></li>
+<li><a href="#283-%E6%B8%85%E9%99%A4%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9">2.8.3 清除临时节点</a></li>
+<li><a href="#284-%E5%88%9B%E5%BB%BA%E8%B4%A8%E7%82%B9">2.8.4 创建质点</a></li>
+<li><a href="#285-%E8%B4%A8%E9%87%8F%E6%A3%80%E6%9F%A5">2.8.5 质量检查</a></li>
+</ul>
+</li>
+<li><a href="#29-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7">2.9 设置载荷</a></li>
+<li><a href="#210-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7%E6%AD%A5">2.10 设置载荷步</a></li>
+<li><a href="#211-%E5%AF%BC%E5%87%BA%E6%B1%82%E8%A7%A3%E6%96%87%E4%BB%B6">2.11 导出求解文件</a></li>
+<li><a href="#212-%E4%BD%BF%E7%94%A8-nastran-%E6%B1%82%E8%A7%A3">2.12 使用 Nastran 求解</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%BB%93%E6%9E%9C">3 结果</a><ul>
+<li><a href="#31-%E4%BD%8D%E7%A7%BB">3.1 位移</a></li>
+<li><a href="#32-%E6%94%AF%E5%8F%8D%E5%8A%9B">3.2 支反力</a></li>
+<li><a href="#33-%E5%BA%94%E5%8A%9B">3.3 应力</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-重力分析">1 重力分析</span></h1><h2><span id="11-定义">1.1 定义</span></h2><p>计算在自身重力的作用下，结构的位移、应力和支反力</p>
+<h2><span id="12-作用">1.2 作用</span></h2><p>可以检验模型的正确性：例如建模时倘若出现连接问题，计算会报错 (f06 文件存在 fatal)</p>
+<h1><span id="2-流程">2 流程</span></h1><h2><span id="21-打开-hypermesh选择-nastran">2.1 打开 HyperMesh，选择 Nastran</span></h2><h2><span id="22-建立网格">2.2 建立网格</span></h2><p>Geom–&gt;nodes–&gt;(0, 0, 0)–&gt;create–&gt;return<br>2D–&gt;planes–&gt;square–&gt;z-axis–&gt;选中该点–&gt;mesh, dele surf–&gt;400–&gt;create–&gt;return</p>
+<h2><span id="23-创建材料">2.3 创建材料</span></h2><h2><span id="24-创建属性">2.4 创建属性</span></h2><h2><span id="25-更新组件">2.5 更新组件</span></h2><h2><span id="26-检查材料与属性">2.6 检查材料与属性</span></h2><h2><span id="27-设置约束">2.7 设置约束</span></h2><h2><span id="28-建立质点">2.8 建立质点</span></h2><h3><span id="281-建立临时节点">2.8.1 建立临时节点</span></h3><p>(0, 0, 100)</p>
+<h3><span id="282-创建刚体">2.8.2 创建刚体</span></h3><p>1D–&gt;rigids–&gt;选中临时节点和多个网格节点–&gt;RBE 2–&gt;勾选所有自由度–&gt;create–&gt;return</p>
+<h3><span id="283-清除临时节点">2.8.3 清除临时节点</span></h3><h3><span id="284-创建质点">2.8.4 创建质点</span></h3><p>1D–&gt;masses–&gt;create–&gt;选中节点–&gt;mass&#x3D;2–&gt;CONM 2–&gt;create</p>
+<h3><span id="285-质量检查">2.8.5 质量检查</span></h3><p>Tool–&gt;mass calc–&gt;选中质点–&gt;calculate</p>
+<h2><span id="29-设置载荷">2.9 设置载荷</span></h2><p>Load Collectors–&gt;create–&gt;grav，GRAV–&gt;create&#x2F;edit–&gt;9810，N3&#x3D;1</p>
+<h2><span id="210-设置载荷步">2.10 设置载荷步</span></h2><p>Analysis–&gt;loadsteps–&gt;gravity_analysis–&gt;linear static–&gt;SPC，LOAD–&gt;create–&gt;return<br>Analysis–&gt;control cards–&gt;SOL(Statics)，POST(-1)，GLOBAL_OUTPUT_REQUEST (DISPLACEMENT，SPCFORCES，STRESS)</p>
+<h2><span id="211-导出求解文件">2.11 导出求解文件</span></h2><h2><span id="212-使用-nastran-求解">2.12 使用 Nastran 求解</span></h2><h1><span id="3-结果">3 结果</span></h1><h2><span id="31-位移">3.1 位移</span></h2><p><img src="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/displacement.png"></p>
+<h2><span id="32-支反力">3.2 支反力</span></h2><p><img src="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/spc_force.png"></p>
+<h2><span id="33-应力">3.3 应力</span></h2><p><img src="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/stress.png"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/HyperMesh/" style="color: #00bcd4">HyperMesh</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Nastran/" style="color: #03a9f4">Nastran</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #00bcd4">重力分析</a>
+        </span>
+        
+    </div>
+    <a href="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/05/01/HyperMesh-for-Nastran-%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/">
+        <h2 class="post-title">HyperMesh for Nastran 静力分析</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                仿真
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/1
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QSgYFPlGh-M&t=533s">https://www.youtube.com/watch?v=QSgYFPlGh-M&amp;t=533s</a></p>
+<hr>
+<!-- toc -->
+
+<ul>
+<li><a href="#1-%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90">1 静力分析</a><ul>
+<li><a href="#11-%E5%90%AB%E4%B9%89">1.1 含义</a></li>
+<li><a href="#12-%E5%85%AC%E5%BC%8F">1.2 公式</a></li>
+<li><a href="#13-%E7%90%86%E8%AE%BA%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C">1.3 理论计算结果</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%B5%81%E7%A8%8B">2 流程</a><ul>
+<li><a href="#21-%E6%89%93%E5%BC%80-hypermesh%E9%80%89%E6%8B%A9-nastran">2.1 打开 HyperMesh，选择 Nastran</a></li>
+<li><a href="#22-%E5%88%9B%E5%BB%BA%E5%87%A0%E4%BD%95">2.2 创建几何</a></li>
+<li><a href="#23-%E5%88%9B%E5%BB%BA%E6%9D%90%E6%96%99">2.3 创建材料</a></li>
+<li><a href="#24-%E5%88%9B%E5%BB%BA%E5%B1%9E%E6%80%A7">2.4 创建属性</a></li>
+<li><a href="#25-%E6%9B%B4%E6%96%B0%E7%BB%84%E4%BB%B6">2.5 更新组件</a></li>
+<li><a href="#26-%E6%A3%80%E6%9F%A5">2.6 检查</a></li>
+<li><a href="#27-%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6">2.7 设置边界条件</a></li>
+<li><a href="#28-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7">2.8 设置载荷</a></li>
+<li><a href="#29-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7%E6%AD%A5">2.9 设置载荷步</a><ul>
+<li><a href="#291-%E9%80%89%E6%8B%A9%E8%BD%BD%E8%8D%B7%E5%AE%B9%E5%99%A8">2.9.1 选择载荷容器</a></li>
+<li><a href="#292-%E9%80%89%E6%8B%A9%E8%BE%93%E5%87%BA">2.9.2 选择输出</a></li>
+</ul>
+</li>
+<li><a href="#210-%E8%AE%BE%E7%BD%AE%E6%8E%A7%E5%88%B6%E5%8D%A1%E7%89%87">2.10 设置控制卡片</a><ul>
+<li><a href="#2101-%E8%AE%BE%E7%BD%AE%E5%88%86%E6%9E%90%E7%B1%BB%E5%9E%8B">2.10.1 设置分析类型</a></li>
+<li><a href="#2102-%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">2.10.2 设置文件格式</a></li>
+</ul>
+</li>
+<li><a href="#211-%E5%AF%BC%E5%87%BA%E6%B1%82%E8%A7%A3%E6%96%87%E4%BB%B6">2.11 导出求解文件</a></li>
+<li><a href="#212-%E6%B1%82%E8%A7%A3-bdf-%E6%96%87%E4%BB%B6">2.12 求解 bdf 文件</a></li>
+<li><a href="#213-%E5%90%8E%E5%A4%84%E7%90%86">2.13 后处理</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%BB%93%E6%9E%9C">3 结果</a><ul>
+<li><a href="#311-%E4%BD%8D%E7%A7%BB">3.1.1 位移</a></li>
+<li><a href="#312-%E5%BA%94%E5%8A%9B">3.1.2 应力</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-静力分析">1 静力分析</span></h1><h2><span id="11-含义">1.1 含义</span></h2><p>计算在<strong>固定不变的载荷</strong>作用下结构的响应，不需要考虑惯性 (inertia) 和阻尼 (damping) 的影响</p>
+<h2><span id="12-公式">1.2 公式</span></h2><p>$$F&#x3D;[K][u]$$</p>
+<ul>
+<li>K 是结构刚度 (stiffness)，$K&#x3D;AE&#x2F;L$</li>
+<li>A 是横截面面积，E 是杨氏模量，L 是长度</li>
+</ul>
+<h2><span id="13-理论计算结果">1.3 理论计算结果</span></h2><p>应力</p>
+<p>$$\sigma&#x3D;F&#x2F;A$$</p>
+<p>位移<br>$$d&#x3D;PL&#x2F;AE$$</p>
+<h1><span id="2-流程">2 流程</span></h1><h2><span id="21-打开-hypermesh选择-nastran">2.1 打开 HyperMesh，选择 Nastran</span></h2><h2><span id="22-创建几何">2.2 创建几何</span></h2><p>Geom–&gt;nodes–&gt;create：(0, 0, 0)<br>2D–&gt;planes–&gt;square：选中该点，z-axis，mesh, dele surf，size&#x3D;100</p>
+<h2><span id="23-创建材料">2.3 创建材料</span></h2><p>Materials–&gt;create–&gt;steel：ISOTROPIC，MAT1<br>编辑，设置三属性</p>
+<h2><span id="24-创建属性">2.4 创建属性</span></h2><p>Properties–&gt;create–&gt;pros：2D，PSHELL，steel–&gt;create–&gt;return<br>编辑，设置厚度为 5</p>
+<h2><span id="25-更新组件">2.5 更新组件</span></h2><p>Components–&gt;update–&gt;选中该组件，pros–&gt;update–&gt;return</p>
+<h2><span id="26-检查">2.6 检查</span></h2><p>Card Edit–&gt;检查材料和属性<br>f10–&gt;查看网格厚度</p>
+<h2><span id="27-设置边界条件">2.7 设置边界条件</span></h2><p>Load Collectors–&gt;create–&gt;constrain–&gt;create<br>Analysis–&gt;constraints–&gt;create–&gt;选中最左侧的节点：勾选所有自由度，SOC–&gt;create–&gt;return</p>
+<h2><span id="28-设置载荷">2.8 设置载荷</span></h2><p>Load Collectors–&gt;create–&gt;load–&gt;create<br>Analysis–&gt;forces–&gt;create–&gt;选中最右侧的节点：18.18，x-axis–&gt;create–&gt;return</p>
+<h2><span id="29-设置载荷步">2.9 设置载荷步</span></h2><h3><span id="291-选择载荷容器">2.9.1 选择载荷容器</span></h3><p>Analysis–&gt;loadsteps–&gt;static：linear static，SPC&#x3D;constrain，LOAD&#x3D;load–&gt;create</p>
+<h3><span id="292-选择输出">2.9.2 选择输出</span></h3><p>Edit–&gt;OUTPU–&gt;DISPLACEMENT–&gt;SORTING，FORMAT–&gt;SPEFORCES–&gt;SORTING，FORMAT–&gt;STRESS–&gt;SORTING，FORMAT–&gt;return<br><code>SORT1：结果按“时间步”或“频率”排序</code></p>
+<pre><code>Time = 1.0
+  Node 1: Displacement
+  Node 2: Displacement
+  ...
+Time = 2.0
+  Node 1: Displacement
+  Node 2: Displacement
+  ...
+</code></pre>
+<p><code>SORT2：结果按“节点”或“单元”排序</code></p>
+<pre><code>Node 1:
+  Time = 1.0: Displacement
+  Time = 2.0: Displacement
+  ...
+Node 2:
+  Time = 1.0: Displacement
+  Time = 2.0: Displacement
+  ...
+</code></pre>
+<h2><span id="210-设置控制卡片">2.10 设置控制卡片</span></h2><p>Analysis–&gt;control cards</p>
+<h3><span id="2101-设置分析类型">2.10.1 设置分析类型</span></h3><p>SOL：Static</p>
+<h3><span id="2102-设置文件格式">2.10.2 设置文件格式</span></h3><p>PARAM：POST，-1<br><code>POST 控制后处理文件的格式（-1 表示求解后将结果输出到 op2 文件，0 表示输出到 xbd 文件）</code></p>
+<h2><span id="211-导出求解文件">2.11 导出求解文件</span></h2><p>Export Solver Deck–&gt;static_analysis.bdf–&gt;Export<br>使用编辑工具，查看 bdf 文件</p>
+<h2><span id="212-求解-bdf-文件">2.12 求解 bdf 文件</span></h2><p>在 f06 文件中：搜索 fatal 与 epsilon</p>
+<ul>
+<li>存在 fatal 表示求解错误，可根据报错信息进行解决</li>
+<li>残差 epsilon 大于允许值 (如1e-9) ，表明模型刚度有奇异</li>
+<li>参考资料：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/710725697">https://zhuanlan.zhihu.com/p/710725697</a></li>
+</ul>
+<h2><span id="213-后处理">2.13 后处理</span></h2><p>使用 HypweView读取 op2 文件</p>
+<h1><span id="3-结果">3 结果</span></h1><h3><span id="311-位移">3.1.1 位移</span></h3><p>Contour–&gt;Displacement<br>修改图例：Legend–&gt;edit legend<br>放缩变形：Deformed–&gt;Value<br><img src="/2025/05/01/HyperMesh-for-Nastran-%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/displacement.gif"></p>
+<h3><span id="312-应力">3.1.2 应力</span></h3><p>Contour–&gt;Stress<br><img src="/2025/05/01/HyperMesh-for-Nastran-%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/stress.gif"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/HyperMesh/" style="color: #00a596">HyperMesh</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Nastran/" style="color: #ff7d73">Nastran</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #03a9f4">静力分析</a>
+        </span>
+        
+    </div>
+    <a href="/2025/05/01/HyperMesh-for-Nastran-%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/04/30/%E6%A8%AA%E5%90%91%E9%A1%B9%E7%9B%AE%E7%94%A8%E5%8D%B0%E7%9B%96%E7%AB%A0%E6%B5%81%E7%A8%8B/">
+        <h2 class="post-title">横向项目用印盖章流程</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E5%8A%9E%E5%85%AC/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                办公
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/30
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1><span id="相关链接">相关链接</span></h1><p>民口项目合同盖章流程</p>
+<p><a target="_blank" rel="noopener" href="https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat1/1027.html">https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat1/1027.html</a></p>
+<p>科研办事常见Q&amp;A</p>
+<p><a target="_blank" rel="noopener" href="https://kyb.seiee.sjtu.edu.cn/kyb/info/16451.htm">https://kyb.seiee.sjtu.edu.cn/kyb/info/16451.htm</a></p>
+<p>国防项目办事流程</p>
+<p><a target="_blank" rel="noopener" href="https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat2/7851.html">https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat2/7851.html</a></p>
+<p>科研办事常见Q&amp;A</p>
+<p><a target="_blank" rel="noopener" href="https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat9/1066.html">https://www.seiee.sjtu.edu.cn/xzzx_bszn_kycx_cat9/1066.html</a></p>
+<h1><span id="重点">重点</span></h1><p>了解项目类型：军&#x2F;民，横&#x2F;纵</p>
+<p>了解所处阶段：招投标&#x2F;合同签订</p>
+<h1><span id="具体流程">具体流程</span></h1><h2><span id="学院科研办科研与基地建设办公室机械楼a-209">学院科研办（科研与基地建设办公室，机械楼A 209）</span></h2><ul>
+<li><p>王老师，邢老师</p>
+</li>
+<li><p>登记</p>
+</li>
+<li><p>项目合同&#x2F;协议审批表：技术合同章</p>
+<ul>
+<li>自行填写内容</li>
+<li>经办人签字盖章</li>
+</ul>
+</li>
+<li><p>用印审批单：校印&#x2F;校长印</p>
+<ul>
+<li>自行填写内容</li>
+<li>经办人签字盖章</li>
+</ul>
+<p><img src="/2025/04/30/%E6%A8%AA%E5%90%91%E9%A1%B9%E7%9B%AE%E7%94%A8%E5%8D%B0%E7%9B%96%E7%AB%A0%E6%B5%81%E7%A8%8B/image-20251124140912088.png" alt="image-20251124140912088"></p>
+</li>
+</ul>
+<h2><span id="重大项目办公室行政b楼-619">重大项目办公室（行政B楼 619）</span></h2><ul>
+<li><p>孙老师（负责项目申请？）</p>
+</li>
+<li><p>庄老师（负责过程，结题验收？）</p>
+</li>
+<li><p>登记</p>
+</li>
+<li><p>项目合同&#x2F;协议审批表：技术合同章</p>
+<ul>
+<li>盖技术合同章</li>
+</ul>
+</li>
+<li><p>用印审批单：校印&#x2F;校长印</p>
+<ul>
+<li>批准人签字盖章</li>
+<li>到行政A楼 109 用印</li>
+</ul>
+<p><img src="/2025/04/30/%E6%A8%AA%E5%90%91%E9%A1%B9%E7%9B%AE%E7%94%A8%E5%8D%B0%E7%9B%96%E7%AB%A0%E6%B5%81%E7%A8%8B/image-20251124141025423.png" alt="image-20251124141025423"></p>
+</li>
+</ul>
+<h2><span id="党政办公室行政a楼-109">党政办公室（行政A楼 109）</span></h2><ul>
+<li><p>登记</p>
+</li>
+<li><p>用印审批单：校印&#x2F;校长印</p>
+<ul>
+<li>用印</li>
+<li>用印须知<ul>
+<li>可以多打印几份，没盖好时可以作为替补</li>
+<li>需要在鼠标垫上面盖，还需要多垫几张纸</li>
+<li>盖上去之后不要松开，握住印章向下按压</li>
+<li>不要太死板</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%8A%9E%E5%85%AC/" style="color: #00bcd4">办公</a>
+        </span>
+        
+    </div>
+    <a href="/2025/04/30/%E6%A8%AA%E5%90%91%E9%A1%B9%E7%9B%AE%E7%94%A8%E5%8D%B0%E7%9B%96%E7%AB%A0%E6%B5%81%E7%A8%8B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/04/30/%E8%83%BD%E9%87%8F%E6%9C%89%E9%99%90%E5%85%83-MATLAB/">
+        <h2 class="post-title">能量有限元(MATLAB)</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/30
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1><span id="主程序">主程序</span></h1><h2><span id="功能">功能</span></h2><p>指定参数空间（激励的位置、幅值、频率），进行能量有限元分析</p>
+<h2><span id="代码">代码</span></h2><pre><code class="matlab">%% 获取数据 不同激励设置
+clear; close all; clc
+%% ==========创建数据存储文件夹 ==========
+output_folder = &#39;EFEA_data_20250429_excitation_1800&#39;;
+if ~exist(output_folder, &#39;dir&#39;)
+    mkdir(output_folder);
+end
+%% ========== 设置固定参数 ==========
+geometry.length_x = 0.5075;    % 薄板在 x 方向的长度
+geometry.length_y = 0.4375;    % 薄板在 y 方向的长度
+geometry.h = 42.4382e-3;       % 薄板的厚度
+
+num_elements_x = 30;            % x 方向的单元数量
+num_elements_y = 30;            % y 方向的单元数量
+num_nodes = (num_elements_x+1)^2; % 节点数量
+
+material.E = 1.6966e9;          % 弹性模量
+material.rho = 94.2547;         % 密度
+material.mu = 0.3;              % 泊松比
+material.damping_ratio = 0.05; % 阻尼比
+%% ========== 设置可变参数范围 ==========
+frequencies = [500:10:550];
+amplitudes = [1:0.1:1.5];
+excitation_shifts = generate_excitation_shifts(num_nodes, 50);
+COUNT = numel(frequencies) * numel(amplitudes) * numel(excitation_shifts);
+%% ========== 生成数据 (并行计算) ==========
+delete(gcp); % 关闭并行池
+CoreNum = 4; % 设定机器CPU核心数量
+parpool(CoreNum); % 开启并行池
+parfor counter = 1:COUNT
+    [frequency, F, offset] = get_parameters(counter, frequencies, amplitudes, excitation_shifts);
+
+    %% ========== 激励设置 ==========
+    excitation_freq = frequency;                    % 激励频率
+    excitation_amp = F;                              % 激励幅值
+    excitation_pos = round(num_nodes/2) + offset;    % 激励位置
+    %% ========== 能量有限元分析 ==========
+    output_filename = sprintf(&#39;%s/data_%d.txt&#39;, output_folder, counter);
+    energy_density = EFEM_2D_plate(geometry, material, struct(&#39;freq&#39;, excitation_freq, &#39;amp&#39;, excitation_amp, &#39;pos&#39;, excitation_pos), num_elements_x, num_elements_y);
+    %% ========== 写入参数数据 ==========
+    fileID = fopen(output_filename, &#39;w&#39;);
+    fprintf(fileID, &#39;%.6f %.6f %.6f %.6f %.6f %.6f %.6f %.6f %.6f %.6f\n&#39;, ...
+        excitation_freq, excitation_amp, excitation_pos, ...
+        material.E, material.rho, material.mu, material.damping_ratio, ...
+        geometry.length_x, geometry.length_y, geometry.h);
+    %% ========== 换算能量密度（dB） ==========
+    E = reshape(energy_density, num_elements_x+1, num_elements_y+1);
+    E_ref = 1e-12;
+    E(E &lt; E_ref) = E_ref;
+    E_dB = 20 * log10(E / E_ref);
+    %% ========== 写入能量密度数据 ==========
+    [x_coords, y_coords] = meshgrid(linspace(0, geometry.length_x, num_elements_x+1), linspace(0, geometry.length_y, num_elements_y+1));
+    for i = 1:numel(x_coords)
+        fprintf(fileID, &#39;%.6f %.6f %.6f\n&#39;, x_coords(i), y_coords(i), E_dB(i));
+    end
+    fclose(fileID);
+    fprintf(&#39;%d/%d | freq = %d amp = %d offset = %d | %s\n&#39;, counter, COUNT, frequency, F, offset, output_filename);
+end
+
+disp(&#39;done&#39;);
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E8%83%BD%E9%87%8F%E6%9C%89%E9%99%90%E5%85%83/" style="color: #00a596">能量有限元</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/MATLAB/" style="color: #ff7d73">MATLAB</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/EFEA/" style="color: #ffa2c4">EFEA</a>
+        </span>
+        
+    </div>
+    <a href="/2025/04/30/%E8%83%BD%E9%87%8F%E6%9C%89%E9%99%90%E5%85%83-MATLAB/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/04/28/Physics-Informed-Machine-Learning-Overview/">
+        <h2 class="post-title">Physics Informed Machine Learning: Overview</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/28
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=JoFW2uSd3Uo&list=PLMrJAkhIeNNQ0BaKuBKY43k4xMo6NSbBa&index=1">https://www.youtube.com/watch?v=JoFW2uSd3Uo&amp;list=PLMrJAkhIeNNQ0BaKuBKY43k4xMo6NSbBa&amp;index=1</a></p>
+<hr>
+<!-- toc -->
+
+<ul>
+<li><a href="#stages">Stages</a><ul>
+<li><a href="#1-decide-on-problem">1. Decide on problem</a></li>
+<li><a href="#2-curate-data">2. Curate data</a></li>
+<li><a href="#3-design-an-architecture">3. Design an architecture</a></li>
+<li><a href="#4-craft-a-loss-function">4. Craft a loss function</a></li>
+<li><a href="#5-employ-optimization">5. Employ optimization</a></li>
+</ul>
+</li>
+<li><a href="#nns">NNs</a></li>
+<li><a href="#loss-function">Loss function</a></li>
+<li><a href="#overall">Overall</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="stages">Stages</span></h1><h2><span id="1-decide-on-problem">1. Decide on problem</span></h2><ul>
+<li>What are we modeling?</li>
+</ul>
+<h2><span id="2-curate-data">2. Curate data</span></h2><ul>
+<li>What data will inform the model?</li>
+</ul>
+<h2><span id="3-design-an-architecture">3. Design an architecture</span></h2><ul>
+<li>RNN, Autoencoder, CNN?</li>
+</ul>
+<h2><span id="4-craft-a-loss-function">4. Craft a loss function</span></h2><ul>
+<li>What models are good?</li>
+</ul>
+<h2><span id="5-employ-optimization">5. Employ optimization</span></h2><ul>
+<li>What algorithms to train model?</li>
+</ul>
+<hr>
+<p><em><strong>Embed physics in each of these stages</strong></em></p>
+<p>在每个环节，均可嵌入物理信息</p>
+<hr>
+<h1><span id="nns">NNs</span></h1><p><img src="/2025/04/28/Physics-Informed-Machine-Learning-Overview/NNs.png"></p>
+<p><img src="/2025/04/28/Physics-Informed-Machine-Learning-Overview/embedded_invariance.png"></p>
+<p>这种网络结构，如图1 ( b )所示，通过强制预测的各向异性张量位于各向同性张量的基础上，嵌入了旋转不变性。旋转不变性意味着流体流动的物理不依赖于观察者坐标系的方向。这是一个基本的物理原理，重要的是任何湍流闭合都要服从它。否则，机器学习模型对定义在不同方向的轴上的相同流进行评估，可能会产生不同的预测结果。</p>
+<p><img src="/2025/04/28/Physics-Informed-Machine-Learning-Overview/%E6%9E%B6%E6%9E%84.png"></p>
+<h1><span id="loss-function">Loss function</span></h1><p><img src="/2025/04/28/Physics-Informed-Machine-Learning-Overview/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%B5%8C%E5%85%A5%E7%89%A9%E7%90%86%E4%BF%A1%E6%81%AF.png"></p>
+<p><img src="/2025/04/28/Physics-Informed-Machine-Learning-Overview/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%B5%8C%E5%85%A5%E7%89%A9%E7%90%86%E4%BF%A1%E6%81%AF2.png"></p>
+<h1><span id="overall">Overall</span></h1><p><img src="/2025/04/28/Physics-Informed-Machine-Learning-Overview/%E6%B5%81%E7%A8%8B.png"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/PIML/" style="color: #ffa2c4">PIML</a>
+        </span>
+        
+    </div>
+    <a href="/2025/04/28/Physics-Informed-Machine-Learning-Overview/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/04/28/Hexo/">
+        <h2 class="post-title">Hexo</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/28
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <hr>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mculover666/article/details/102871618">https://blog.csdn.net/Mculover666/article/details/102871618</a></p>
+<hr>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0">一、新建文章</a></li>
+<li><a href="#%E4%BA%8C-%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0">二、编辑文章</a></li>
+<li><a href="#%E4%B8%89-%E7%94%9F%E6%88%90%E6%96%87%E7%AB%A0">三、生成文章</a></li>
+<li><a href="#%E5%9B%9B-%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0">四、预览文章</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="一-新建文章">一、新建文章</span></h1><p>在根目录下 Open Git Bash here，然后</p>
+<pre><code>hexo new &quot;文章标题&quot;
+</code></pre>
+<p><img src="/2025/04/28/Hexo/new1.png"></p>
+<h1><span id="二-编辑文章">二、编辑文章</span></h1><p>打开新建的文章进行编辑</p>
+<h1><span id="三-生成文章">三、生成文章</span></h1><p>先清除旧数据</p>
+<pre><code>hexo clean
+</code></pre>
+<p>后生成新页面</p>
+<pre><code>hexo g
+</code></pre>
+<h1><span id="四-预览文章">四、预览文章</span></h1><p>在本地打开网页</p>
+<pre><code>hexo s
+</code></pre>
+<p><img src="/2025/04/28/Hexo/s.png"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Hexo/" style="color: #ff7d73">Hexo</a>
+        </span>
+        
+    </div>
+    <a href="/2025/04/28/Hexo/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/">
+        <h2 class="post-title">HyperMesh for Nastran 模态分析</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                仿真
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/28
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=vOLSG9-WKYQ&t=1595s">https://www.youtube.com/watch?v=vOLSG9-WKYQ&amp;t=1595s</a></p>
+<hr>
+<!-- toc -->
+
+<ul>
+<li><a href="#1-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90%E7%9A%84%E4%BD%9C%E7%94%A8">1 模态分析的作用</a><ul>
+<li><a href="#11-%E7%A1%AE%E5%AE%9A%E8%87%AA%E7%84%B6%E9%A2%91%E7%8E%87">1.1 确定自然频率</a></li>
+<li><a href="#12-%E7%A1%AE%E5%AE%9A%E6%A8%A1%E6%80%81%E5%BD%A2%E7%8A%B6-%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F">1.2 确定模态形状 （特征向量）</a></li>
+<li><a href="#13-fe-model-integrity">1.3 FE model integrity</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90%E7%9A%84%E5%88%86%E7%B1%BB">2 模态分析的分类</a><ul>
+<li><a href="#21-%E8%87%AA%E7%94%B1%E5%88%9A%E4%BD%93%E8%BF%90%E5%8A%A8">2.1 自由（刚体运动）</a></li>
+<li><a href="#22-%E5%9B%BA%E5%AE%9A">2.2 固定</a></li>
+</ul>
+</li>
+<li><a href="#3-%E4%BB%BF%E7%9C%9F%E6%B5%81%E7%A8%8B">3 仿真流程</a><ul>
+<li><a href="#31-%E6%89%93%E5%BC%80-hypermesh%E9%80%89%E6%8B%A9-nastran">3.1 打开 HyperMesh，选择 Nastran</a></li>
+<li><a href="#32-%E5%88%9B%E5%BB%BA%E5%87%A0%E4%BD%95">3.2 创建几何</a></li>
+<li><a href="#33-%E5%88%92%E5%88%86%E7%BD%91%E6%A0%BC">3.3 划分网格</a></li>
+<li><a href="#34-%E8%AE%BE%E7%BD%AE%E6%9D%90%E6%96%99">3.4 设置材料</a></li>
+<li><a href="#35-%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7">3.5 设置属性</a></li>
+<li><a href="#36-%E6%9B%B4%E6%96%B0%E7%BB%84%E4%BB%B6">3.6 更新组件</a></li>
+<li><a href="#37-%E6%B8%85%E9%99%A4%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9">3.7 清除临时节点</a></li>
+<li><a href="#38-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7">3.8 设置载荷</a></li>
+<li><a href="#39-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7%E6%AD%A5">3.9 设置载荷步</a></li>
+<li><a href="#310-%E8%AE%BE%E7%BD%AE">3.10 设置</a></li>
+<li><a href="#311-%E5%AF%BC%E5%87%BA%E6%B1%82%E8%A7%A3%E6%96%87%E4%BB%B6">3.11 导出求解文件</a></li>
+<li><a href="#312-%E5%9B%BA%E5%AE%9A%E6%83%85%E5%BD%A2">3.12 固定情形</a><ul>
+<li><a href="#3121-%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6">3.12.1 设置边界条件</a></li>
+<li><a href="#3122-%E8%AE%BE%E7%BD%AE%E8%BD%BD%E8%8D%B7%E6%AD%A5">3.12.2 设置载荷步</a></li>
+<li><a href="#3123-%E5%AF%BC%E5%87%BA%E6%B1%82%E8%A7%A3%E6%96%87%E4%BB%B6">3.12.3 导出求解文件</a></li>
+</ul>
+</li>
+<li><a href="#313-%E6%B1%82%E8%A7%A3">3.13 求解</a></li>
+<li><a href="#314-%E5%90%8E%E5%A4%84%E7%90%86%E5%8F%AF%E8%A7%86%E5%8C%96">3.14 后处理（可视化）</a></li>
+</ul>
+</li>
+<li><a href="#4-%E7%BB%93%E6%9E%9C">4 结果</a><ul>
+<li><a href="#41-%E6%89%93%E5%BC%80-f06-%E6%96%87%E4%BB%B6">4.1 打开 f06 文件</a><ul>
+<li><a href="#411-freee">4.1.1 Freee</a></li>
+<li><a href="#412-fixed">4.1.2 Fixed</a></li>
+</ul>
+</li>
+<li><a href="#42-%E5%8A%A0%E8%BD%BD-op2-%E6%96%87%E4%BB%B6">4.2 加载 op2 文件</a><ul>
+<li><a href="#1">1</a></li>
+<li><a href="#2">2</a></li>
+<li><a href="#3">3</a></li>
+<li><a href="#4">4</a></li>
+<li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
+<li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
+<li><a href="#9">9</a></li>
+<li><a href="#10">10</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-模态分析的作用">1 模态分析的作用</span></h1><h2><span id="11-确定自然频率">1.1 确定自然频率</span></h2><h2><span id="12-确定模态形状-特征向量">1.2 确定模态形状 （特征向量）</span></h2><h2><span id="13-fe-model-integrity">1.3 FE model integrity</span></h2><h1><span id="2-模态分析的分类">2 模态分析的分类</span></h1><p>根据边界条件分类：</p>
+<h2><span id="21-自由刚体运动">2.1 自由（刚体运动）</span></h2><h2><span id="22-固定">2.2 固定</span></h2><hr>
+<h1><span id="3-仿真流程">3 仿真流程</span></h1><h2><span id="31-打开-hypermesh选择-nastran">3.1 打开 HyperMesh，选择 Nastran</span></h2><h2><span id="32-创建几何">3.2 创建几何</span></h2><p>创建两个点：Geom –&gt; nodes，坐标分别为(0, 0,0) 与 (0,100,0)</p>
+<h2><span id="33-划分网格">3.3 划分网格</span></h2><p>2D –&gt; drag，选中上述两点，沿 x 轴，距离为 1000<br>2D –&gt; autoMesh，选中网格，自动划分</p>
+<h2><span id="34-设置材料">3.4 设置材料</span></h2><p>点击 Materials，创建材料 steel：isotropic、MAT1，点击 create&#x2F;edit<br>设置材料三属性,，点击 return<br>E &#x3D; 2.1e5<br>NU &#x3D; 0.3<br>RHO &#x3D; 7.89e-9</p>
+<h2><span id="35-设置属性">3.5 设置属性</span></h2><p>点击 Properties，创建属性 sectional：2D、PSHELL、steel，点击create&#x2F;edit<br>设置厚度 T &#x3D; 5，点击 return</p>
+<h2><span id="36-更新组件">3.6 更新组件</span></h2><p>点击 Components，点击 update<br>选中组件，点击 property，选择 sectional，点击 update，点击 return</p>
+<h2><span id="37-清除临时节点">3.7 清除临时节点</span></h2><p>Geom –&gt; temp nodes – &gt; clear all –&gt; return</p>
+<h2><span id="38-设置载荷">3.8 设置载荷</span></h2><p>点击 Load Collectors，创建载荷 eigrl：EIGRL，点击 create&#x2F;edit<br>设置 ND &#x3D; 10，点击return</p>
+<h2><span id="39-设置载荷步">3.9 设置载荷步</span></h2><p>Analysis –&gt; loadsteps<br>创建载荷步 modal：type 选择 normal modes、METHOD(STRUCT) 选择 eigrl，点击 create<br>点击 edit，勾选 OUTPUT，勾选 DISPLACEMENT，勾选 SORTING 和 FORMAT，点击 return</p>
+<h2><span id="310-设置">3.10 设置</span></h2><p>Analysis –&gt; control cards<br>点击 SOL：Analysis 选择 Normal Modes，点击 return 后<br>点击 PARAM：勾选 POST，设置 POST_V1 &#x3D; -1，点击 return</p>
+<h2><span id="311-导出求解文件">3.11 导出求解文件</span></h2><p>File –&gt; export –&gt; Solver Deck<br>选择 Nastran，导出 bdf 文件</p>
+<hr>
+<h2><span id="312-固定情形">3.12 固定情形</span></h2><h3><span id="3121-设置边界条件">3.12.1 设置边界条件</span></h3><p>点击 Load Collectors，创建边界条件 spc：no card image，点击 create，点击 return<br>Analysis –&gt; constrains<br>选中最左侧的节点，勾选 6 个自由度，load type 选择 SPC，点击 create，点击 return</p>
+<h3><span id="3122-设置载荷步">3.12.2 设置载荷步</span></h3><p>Analysis –&gt; loadsteps<br>勾选 SPC，选择 spc，点击 update，点击 return</p>
+<h3><span id="3123-导出求解文件">3.12.3 导出求解文件</span></h3><p>File –&gt; export –&gt; Solver Deck<br>选择 Nastran，导出 bdf 文件</p>
+<hr>
+<h2><span id="313-求解">3.13 求解</span></h2><p>打开 MSC Nastran<br>选择对应的 bdf 文件<br>点击 Run</p>
+<h2><span id="314-后处理可视化">3.14 后处理（可视化）</span></h2><p>打开 HyperView<br>Load model<br>Load results<br>点击 Apply</p>
+<hr>
+<h1><span id="4-结果">4 结果</span></h1><h2><span id="41-打开-f06-文件">4.1 打开 f06 文件</span></h2><h3><span id="411-freee">4.1.1 Freee</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/freee_eigen.png"></p>
+<h3><span id="412-fixed">4.1.2 Fixed</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/fixed_eigen.png"></p>
+<h2><span id="42-加载-op2-文件">4.2 加载 op2 文件</span></h2><h3><span id="1">1</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode1.gif"></p>
+<h3><span id="2">2</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode2.gif"></p>
+<h3><span id="3">3</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode3.gif"></p>
+<h3><span id="4">4</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode4.gif"></p>
+<h3><span id="5">5</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode5.gif"></p>
+<h3><span id="6">6</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode6.gif"></p>
+<h3><span id="7">7</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode7.gif"></p>
+<h3><span id="8">8</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode8.gif"></p>
+<h3><span id="9">9</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode9.gif"></p>
+<h3><span id="10">10</span></h3><p><img src="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/mode10.gif"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/" style="color: #ffa2c4">模态分析</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/HyperMesh/" style="color: #03a9f4">HyperMesh</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Nastran/" style="color: #00bcd4">Nastran</a>
+        </span>
+        
+    </div>
+    <a href="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/10/13/%E6%AF%8F%E6%97%A5%E6%94%B6%E8%8E%B7%E3%80%81%E7%83%A6%E5%BF%A7%E4%B8%8E%E6%80%9D%E8%80%83-2023-10/">
+        <h2 class="post-title">每日收获与烦忧_2023_10</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                生活
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/10/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1><span id="2023_10_12">2023_10_12</span></h1><h4><span id="今日收获">今日收获</span></h4><ol>
+<li>与导师的沟通技巧</li>
+</ol>
+<p>问候+前因+问题。适用于某段时间内首次与导师沟通或寻求帮助。首先，合适的  问候语显得有礼貌，不突兀，包括：您好、早上好、中秋节好等。其次，简洁明了地讲述事件的前因，可以让对方明白你的关注点，明确此次沟通围绕着何事展开。最后，明晰地阐明自己的意图：或是预约时间、或是进行确定、或是寻求意见、或是请求帮助。</p>
+<ol start="2">
+<li>是否去考驾照</li>
+</ol>
+<p>考驾照需要约1个月时间、4000余块钱、地点离交大很近。倘若近期不考驾照，或许读博期间就没有时间考驾照，可能得等到毕业之后才有空余时间去考。而在读博期间，驾照的存在对生活、学习和工作都有一定的便利，所以有必要去考驾照。</p>
+<p>C1 (手动挡) or C2 (自动挡)</p>
+<p>远达盛教练：15921177720 ，学费4800 C2，应该几个人一起报有优惠</p>
+<p>远达的盛教练 蛮好的<br>我三月一个月搞定的<br>微信号：wmqsw000</p>
+<p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/527733622_121322294">驾驶证C1和C2的区别，主要有三个方面，有一点很多人想不通！_搜狐汽车_搜狐网 (sohu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.icauto.com.cn/baike/68/689600.html">2023c1驾驶证体检要求新规，c1驾照体检项目和视力要求_车主指南 (icauto.com.cn)</a></p>
+<h4><span id></span></h4><h1><span id="2023_10_20">2023_10_20</span></h1><h4><span id="今日收获">今日收获</span></h4><ol>
+<li>研究方向的选择</li>
+</ol>
+<p>研究方向不能过于偏向工程 (项目) (应用)，否则难以创新，难以发论文。</p>
 
             
         </div>
@@ -1204,7 +1200,7 @@
         
         
     </div>
-    <a href="/2023/10/15/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E8%8E%B7%E5%A5%96%E6%83%85%E5%86%B5/" class="go-post">阅读全文</a>
+    <a href="/2024/10/13/%E6%AF%8F%E6%97%A5%E6%94%B6%E8%8E%B7%E3%80%81%E7%83%A6%E5%BF%A7%E4%B8%8E%E6%80%9D%E8%80%83-2023-10/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -1214,6 +1210,8 @@
     
     <a class="page-num" href="/page/2">2</a>
     
+    
+    <a class="page-num" href="/page/3">3</a>
     
     
     
@@ -1233,7 +1231,7 @@
         </div>
         <div class="name">N FF</div>
         <div class="description">
-            <p>愚者<br>东京帅哥</p>
+            <p>China<br>SJTU</p>
 
         </div>
         
@@ -1241,7 +1239,7 @@
         <div class="friend-links">
             
             <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://nff825.github.io">NFF の小窝</a>
+                <a href="https://nff825.github.io">NFF の小窝</a>
             </div>
             
         </div>
@@ -1257,7 +1255,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2023 NFF の小窝
+            2023 - 2026 NFF の小窝
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

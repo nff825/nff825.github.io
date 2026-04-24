@@ -30,6 +30,11 @@
 <script src="/js/lib/highlight.js"></script>
 
 
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
 
 <script src="/js/lib/preview.js"></script>
 
@@ -165,10 +170,10 @@
     </div>
     
     <div class="content" v-pre>
-        <h3 id="航空发动机外部管路自动敷设研究"><a href="#航空发动机外部管路自动敷设研究" class="headerlink" title="航空发动机外部管路自动敷设研究"></a>航空发动机外部管路自动敷设研究</h3><h3 id="基于智能优化算法的船舶管路智能设计"><a href="#基于智能优化算法的船舶管路智能设计" class="headerlink" title="基于智能优化算法的船舶管路智能设计"></a>基于智能优化算法的船舶管路智能设计</h3><h4 id="一、建立数学模型"><a href="#一、建立数学模型" class="headerlink" title="一、建立数学模型"></a>一、建立数学模型</h4><ol>
+        <h3><span id="航空发动机外部管路自动敷设研究">航空发动机外部管路自动敷设研究</span></h3><h3><span id="基于智能优化算法的船舶管路智能设计">基于智能优化算法的船舶管路智能设计</span></h3><h4><span id="一-建立数学模型">一、建立数学模型</span></h4><ol>
 <li>划分设计空间，建立栅格模型——栅格法</li>
 </ol>
-<h3 id="船舶管路智能布局优化设计"><a href="#船舶管路智能布局优化设计" class="headerlink" title="船舶管路智能布局优化设计"></a>船舶管路智能布局优化设计</h3><h3 id="0-研究意义"><a href="#0-研究意义" class="headerlink" title="0. 研究意义"></a>0. 研究意义</h3><h4 id="1-建立模型"><a href="#1-建立模型" class="headerlink" title="1. 建立模型"></a>1. 建立模型</h4><h5 id="1-1-舱室-栅格法"><a href="#1-1-舱室-栅格法" class="headerlink" title="1.1 舱室 (栅格法)"></a>1.1 舱室 (栅格法)</h5><ol>
+<h3><span id="船舶管路智能布局优化设计">船舶管路智能布局优化设计</span></h3><h3><span id="0-研究意义">0. 研究意义</span></h3><h4><span id="1-建立模型">1. 建立模型</span></h4><h5><span id="11-舱室-栅格法">1.1 舱室 (栅格法)</span></h5><ol>
 <li><p>舱室简化为长方体</p>
 </li>
 <li><p>用栅格法对长方体进行划分</p>
@@ -177,15 +182,15 @@
 <li><p>对长方体模型进行修正</p>
 </li>
 </ol>
-<h5 id="1-2-障碍物-姿态空间法、包围盒法"><a href="#1-2-障碍物-姿态空间法、包围盒法" class="headerlink" title="1.2 障碍物 (姿态空间法、包围盒法)"></a>1.2 障碍物 (姿态空间法、包围盒法)</h5><ol>
+<h5><span id="12-障碍物-姿态空间法-包围盒法">1.2 障碍物 (姿态空间法、包围盒法)</span></h5><ol>
 <li>建立一个或多个规则的长方体将障碍物完全包含</li>
 <li>根据障碍物的固有属性、机械设备的可操作性和维修性来设置</li>
 </ol>
-<h5 id="1-3-管路"><a href="#1-3-管路" class="headerlink" title="1.3 管路"></a>1.3 管路</h5><ul>
+<h5><span id="13-管路">1.3 管路</span></h5><ul>
 <li>用管路的中心线来代表管路进行布置</li>
 </ul>
-<h4 id="2-智能设计"><a href="#2-智能设计" class="headerlink" title="2. 智能设计"></a>2. 智能设计</h4><p>实现管路的智能设计，有两条路线，一条是使用优化算法，另一条是基于深度学习。</p>
-<h5 id="2-1-基于优化算法"><a href="#2-1-基于优化算法" class="headerlink" title="2.1 基于优化算法"></a>2.1 基于优化算法</h5><table>
+<h4><span id="2-智能设计">2. 智能设计</span></h4><p>实现管路的智能设计，有两条路线，一条是使用优化算法，另一条是基于深度学习。</p>
+<h5><span id="21-基于优化算法">2.1 基于优化算法</span></h5><table>
 <thead>
 <tr>
 <th>算法</th>
@@ -224,13 +229,11 @@
 <td></td>
 </tr>
 </tbody></table>
-<h5 id="2-2-基于深度学习"><a href="#2-2-基于深度学习" class="headerlink" title="2.2 基于深度学习"></a>2.2 基于深度学习</h5><h3 id="汇报"><a href="#汇报" class="headerlink" title="汇报"></a>汇报</h3><h4 id="第一页"><a href="#第一页" class="headerlink" title="第一页"></a>第一页</h4><p>知识驱动的管路敏捷设计与评估</p>
-<p>宁峰峰</p>
-<p>2023年10月29日</p>
-<h4 id="第二页-目录"><a href="#第二页-目录" class="headerlink" title="第二页 目录"></a>第二页 目录</h4><p>研究背景</p>
+<h5><span id="22-基于深度学习">2.2 基于深度学习</span></h5><h3><span id="汇报">汇报</span></h3><h4><span id="第一页">第一页</span></h4><p>2023年10月29日</p>
+<h4><span id="第二页-目录">第二页 目录</span></h4><p>研究背景</p>
 <p>主体内容</p>
 <p>总结与思考</p>
-<h4 id="第三页-研究背景"><a href="#第三页-研究背景" class="headerlink" title="第三页 研究背景"></a>第三页 研究背景</h4><ul>
+<h4><span id="第三页-研究背景">第三页 研究背景</span></h4><ul>
 <li>研究对象：船舶管路系统<ul>
 <li>管系设计是船舶设计的重要内容之一</li>
 <li>良好的管系设计对于船舶安全性、经济性、总体布局的合理性、可操作性、维修及保证船舶各种机械的正常运转和安全航行起着不可替代的作用</li>
@@ -241,8 +244,8 @@
 <li>船舶管路布局优化设计是在给定的几何、拓扑、技术、规则等约束中求解各种可行管路布置结果的过程</li>
 <li>可扩展至航空发动机、大规模集成电路</li>
 </ul>
-<h4 id="第四页-主体内容"><a href="#第四页-主体内容" class="headerlink" title="第四页 主体内容"></a>第四页 主体内容</h4><p>一、建立模型</p>
-<h5 id="1-1-舱室-栅格法-1"><a href="#1-1-舱室-栅格法-1" class="headerlink" title="1.1 舱室 (栅格法)"></a>1.1 舱室 (栅格法)</h5><ol>
+<h4><span id="第四页-主体内容">第四页 主体内容</span></h4><p>一、建立模型</p>
+<h5><span id="11-舱室-栅格法">1.1 舱室 (栅格法)</span></h5><ol>
 <li><p>舱室简化为长方体</p>
 </li>
 <li><p>用栅格法对长方体进行划分</p>
@@ -251,15 +254,15 @@
 <li><p>对长方体模型进行修正</p>
 </li>
 </ol>
-<h5 id="1-2-障碍物-姿态空间法、包围盒法-1"><a href="#1-2-障碍物-姿态空间法、包围盒法-1" class="headerlink" title="1.2 障碍物 (姿态空间法、包围盒法)"></a>1.2 障碍物 (姿态空间法、包围盒法)</h5><ol>
+<h5><span id="12-障碍物-姿态空间法-包围盒法">1.2 障碍物 (姿态空间法、包围盒法)</span></h5><ol>
 <li>建立一个或多个规则的长方体将障碍物完全包含</li>
 <li>根据障碍物的固有属性、机械设备的可操作性和维修性来设置</li>
 </ol>
-<h5 id="1-3-管路-1"><a href="#1-3-管路-1" class="headerlink" title="1.3 管路"></a>1.3 管路</h5><ul>
+<h5><span id="13-管路">1.3 管路</span></h5><ul>
 <li>用管路的中心线来代表管路进行布置</li>
 </ul>
-<h4 id="第五页-主体内容"><a href="#第五页-主体内容" class="headerlink" title="第五页 主体内容"></a>第五页 主体内容</h4><p>二、确定目标函数</p>
-<p><img src="/2023/10/25/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/Users\asus\AppData\Roaming\Typora\typora-user-images\image-20231028215542922.png" alt="image-20231028215542922"></p>
+<h4><span id="第五页-主体内容">第五页 主体内容</span></h4><p>二、确定目标函数</p>
+<p><img src="/2023/10/25/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/image-20231028215542922.png" alt="image-20231028215542922"></p>
 <p>三、智能设计</p>
 <p>四、试验验证</p>
 
@@ -277,7 +280,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2023 NFF の小窝
+            2023 - 2026 NFF の小窝
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

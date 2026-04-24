@@ -30,6 +30,11 @@
 <script src="/js/lib/highlight.js"></script>
 
 
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
 
 <script src="/js/lib/preview.js"></script>
 
@@ -183,7 +188,7 @@
 <td>信息素</td>
 </tr>
 </tbody></table>
-<h3 id="蚁群算法"><a href="#蚁群算法" class="headerlink" title="蚁群算法"></a>蚁群算法</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>蚂蚁</p>
+<h3><span id="蚁群算法">蚁群算法</span></h3><h4><span id="1-概述">1. 概述</span></h4><p>蚂蚁</p>
 <ul>
 <li>在其经过的路径上释放信息素</li>
 <li>能够感知其它蚂蚁释放的信息素</li>
@@ -200,7 +205,7 @@
 <li>整个蚂蚁群体的所有路径——解空间</li>
 <li>最终，整个蚂蚁群体会在<strong>正反馈</strong>的作用下集中在最佳路径上——最优解</li>
 </ul>
-<h4 id="2-数学模型"><a href="#2-数学模型" class="headerlink" title="2. 数学模型"></a>2. 数学模型</h4><h4 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3. 算法流程"></a>3. 算法流程</h4><ol>
+<h4><span id="2-数学模型">2. 数学模型</span></h4><h4><span id="3-算法流程">3. 算法流程</span></h4><ol>
 <li>初始化参数<ul>
 <li>蚁群规模</li>
 <li>信息素重要程度因子</li>
@@ -221,18 +226,18 @@
 </li>
 <li>判断是否终止</li>
 </ol>
-<h4 id="4-特点"><a href="#4-特点" class="headerlink" title="4. 特点"></a>4. 特点</h4><ul>
+<h4><span id="4-特点">4. 特点</span></h4><ul>
 <li>正反馈，逼近最优解</li>
 <li>个体通过信息素影响环境，个体能实时感知环境变化，个体间通过环境间接通信</li>
 <li>多个个体同时进行并行计算，提高算法的计算能力和运行效率</li>
 <li>启发式的概率搜索方式，不易陷入局部最优，易于寻找全局最优解</li>
 </ul>
-<h3 id="旅行商问题-Traveling-Salesman-Problem-TSP"><a href="#旅行商问题-Traveling-Salesman-Problem-TSP" class="headerlink" title="旅行商问题 (Traveling Salesman Problem, TSP)"></a>旅行商问题 (Traveling Salesman Problem, TSP)</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><ul>
+<h3><span id="旅行商问题-traveling-salesman-problem-tsp">旅行商问题 (Traveling Salesman Problem, TSP)</span></h3><h4><span id="1-概述">1. 概述</span></h4><ul>
 <li>在 $N$ 个城市中各经历一次后回到出发点，使所经过的路程最短</li>
 <li>不考虑方向，可能存在的闭合路径数目为 $\frac{(N-1)!}{2}$ </li>
 <li>TSP 问题常被用于验证算法性能</li>
 </ul>
-<h4 id="2-MATLAB-重点函数"><a href="#2-MATLAB-重点函数" class="headerlink" title="2.  MATLAB 重点函数"></a>2.  MATLAB 重点函数</h4><ul>
+<h4><span id="2-matlab-重点函数">2.  MATLAB 重点函数</span></h4><ul>
 <li>ismember(A, S)<ul>
 <li>返回一个形状和 A 相同的向量</li>
 <li>A 中的元素在 S 中能找到，对应位置的元素为1，否则为0</li>
@@ -254,7 +259,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="3-具体步骤"><a href="#3-具体步骤" class="headerlink" title="3. 具体步骤"></a>3. 具体步骤</h4><ol>
+<h4><span id="3-具体步骤">3. 具体步骤</span></h4><ol>
 <li><p>清空环境变量</p>
 <blockquote>
 <p>clear all</p>
@@ -350,7 +355,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2023 NFF の小窝
+            2023 - 2026 NFF の小窝
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

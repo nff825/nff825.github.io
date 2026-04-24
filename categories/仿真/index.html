@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>Categories: 仿真 | NFF の小窝</title>
+    <meta name="author" content="N FF" />
+    <meta name="description" content="一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="stylesheet" href="/css/<file>" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NFF の小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NFF の小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/categories/%E4%BB%BF%E7%9C%9F/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                仿真
+            </a>
+        </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/categories/%E7%BC%96%E8%BE%91/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                编辑
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E9%98%85%E8%AF%BB/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                阅读
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                论文写作
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E5%8A%9E%E5%85%AC/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                办公
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E7%94%9F%E6%B4%BB/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                生活
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E5%85%B6%E4%BB%96/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                其他
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                深度学习
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2025/5/4</div>
+            <a href="/2025/05/04/HyperMesh-for-Nastran-%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/">
+                <h3>HyperMesh for Nastran 频响分析</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        仿真
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/HyperMesh/" style="color: #ff7d73">HyperMesh</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/Nastran/" style="color: #03a9f4">Nastran</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/%E9%A2%91%E5%93%8D%E5%88%86%E6%9E%90/" style="color: #ff7d73">频响分析</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2025/5/2</div>
+            <a href="/2025/05/02/HyperMesh-for-Nastran-%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/">
+                <h3>HyperMesh for Nastran 重力分析</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        仿真
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/HyperMesh/" style="color: #ff7d73">HyperMesh</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/Nastran/" style="color: #00bcd4">Nastran</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/%E9%87%8D%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #ff7d73">重力分析</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2025/5/1</div>
+            <a href="/2025/05/01/HyperMesh-for-Nastran-%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/">
+                <h3>HyperMesh for Nastran 静力分析</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        仿真
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/HyperMesh/" style="color: #03a9f4">HyperMesh</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/Nastran/" style="color: #ffa2c4">Nastran</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/%E9%9D%99%E5%8A%9B%E5%88%86%E6%9E%90/" style="color: #00a596">静力分析</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2025/4/28</div>
+            <a href="/2025/04/28/HyperMesh-for-Nastran-%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/">
+                <h3>HyperMesh for Nastran 模态分析</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E4%BB%BF%E7%9C%9F/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        仿真
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90/" style="color: #ff7d73">模态分析</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/HyperMesh/" style="color: #ffa2c4">HyperMesh</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/Nastran/" style="color: #03a9f4">Nastran</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2026 NFF の小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;N FF
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/<file>"></script>
+    
+</body>
+</html>
