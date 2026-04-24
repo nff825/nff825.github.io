@@ -200,137 +200,7 @@
         <div class="content" v-pre>
             
             <p>[TOC]</p>
-<h2><span id="张量-tensor">张量 (tensor)</span></h2><h4><span id="0阶张量-标量-scalar">0阶张量 (标量, scalar)</span></h4><blockquote>
-<p>x &#x3D; np.array(12)</p>
-</blockquote>
-<h4><span id="1阶张量-向量-vector">1阶张量 (向量, vector)</span></h4><blockquote>
-<p>x &#x3D; np.array([1, 2, 3, 4, 5])</p>
-</blockquote>
-<p>该张量有一个轴，该向量为5维向量</p>
-<h4><span id="2阶张量-矩阵-matrix">2阶张量 (矩阵, matrix)</span></h4><blockquote>
-<p>x &#x3D; np.array([[1, 2, 3, 4, 50],</p>
-<p>​                        [6, 7, 8, 9, 10],</p>
-<p>​                        [1, 2, 3, 4, 20])</p>
-</blockquote>
-<p>该张量有两个轴 (行和列)</p>
-<h4><span id="3阶张量与更高阶的张量">3阶张量与更高阶的张量</span></h4><blockquote>
-<p>x &#x3D; np.array([[[1, 2, 3, 10],</p>
-<p>​                         [2, 4, 6, 20]],</p>
-<p>​                        [[1, 3, 5, 10],</p>
-<p>​                         [2, 5, 8, 20]]])</p>
-</blockquote>
-<p>该3阶张量由两个矩阵组成，可以理解为数字组成的长方体</p>
-<h4><span id="关键属性">关键属性</span></h4><ol>
-<li><p>阶数 (轴的个数, ndim)</p>
-</li>
-<li><p>形状 (张量沿每个轴的维度大小或元素个数, shape)</p>
-<blockquote>
-<p>矩阵的形状为 (3, 5)</p>
-<p>向量的形状为 (5,)</p>
-<p>标量的形状为 ()</p>
-</blockquote>
-</li>
-<li><p>数据类型 (dtype)</p>
-</li>
-<li><p>以MNIST数据集为例：</p>
-<blockquote>
-<p>train_images.ndim &#x3D; 3</p>
-<p>train_images.shape &#x3D; (60000, 28, 28)</p>
-<p>train_images.dtype &#x3D; unit8  8位整数, 取值为0~255</p>
-</blockquote>
-</li>
-</ol>
-<h4><span id="操作张量">操作张量</span></h4><p>张量切片 (tensor slicing)</p>
-<p><strong>沿着第一个轴操作张量</strong></p>
-<blockquote>
-<p>train_images[i]  第 i 张数字图像</p>
-<p>my_slice &#x3D; train_images[10:100]  选择第10~100 (不含100) 张数字图像，等同于</p>
-<blockquote>
-<p>my_slice &#x3D; train_images[10:100,  : ,  : ]</p>
-<p>my_slice &#x3D; train_images[10:100, 0:28, 0:28]</p>
-</blockquote>
-</blockquote>
-<p><strong>沿着第二个和第三个轴操作张量</strong></p>
-<blockquote>
-<p>my_slice &#x3D; train_images[ : , 14:, 14:]  所有图像的右下角14像素×14像素的区域</p>
-<p>my_slice &#x3D; train_images[ : , 7:-7, 7:-7]  所有图像中心的14像素×14像素的区域</p>
-</blockquote>
-<h4><span id="数据批量">数据批量</span></h4><p>张量的第一个轴 (轴0) 是样本轴 (sample axis)，深度学习模型将数据拆分为小批量后进行处理</p>
-<blockquote>
-<p>batch &#x3D; train_images[:128]  第0个批量</p>
-<p>batch &#x3D; train_images[128 * n:128 * (n + 1)]  第 n 个批量</p>
-<p>第一个轴 (轴0) 叫做批量轴 (batch axis)</p>
-</blockquote>
-<h4><span id="现实世界中的数据张量实例">现实世界中的数据张量实例</span></h4><ol>
-<li>向量数据：2阶张量，形状为 (samples, features)<ul>
-<li>每个样本是一个特征向量</li>
-</ul>
-</li>
-<li>时间序列数据：3阶张量，形状为 (samples, timesteps, features)<ul>
-<li>每个样本是特征向量组成的序列，序列长度为 timesteps</li>
-</ul>
-</li>
-<li>图像数据：4阶张量，形状为 (samples, height, width, channels)<ul>
-<li>每个样本是一个二维像素网格，每个像素由一个”通道” (channel) 向量表示</li>
-<li>一张灰度图像可以保存在一个2阶张量中</li>
-</ul>
-</li>
-<li>视频数据：5阶张量，形状为 (samples, frames, height, width, channels)<ul>
-<li>每个样本是都是由图像 (一帧) 组成的序列，序列长度 (每个视频帧的数量) 为 frames</li>
-</ul>
-</li>
-</ol>
-<h4><span id="张量计算">张量计算</span></h4><p><strong>逐元素运算 (加法和 relu 运算)</strong></p>
-<blockquote>
-<p>import numpy as np</p>
-<p>z &#x3D; x + y  逐元素相加</p>
-<p>z &#x3D; np.maximum(z, 0.)  逐元素 relu</p>
-<p>z &#x3D; x * y  逐元素乘积</p>
-</blockquote>
-<p><strong>广播 (broadcast)</strong></p>
-<p>在没有歧义且可行的情况下，阶数较低的张量会被广播，以匹配阶数较高的*张量的形状。步骤如下：</p>
-<ol>
-<li>向小张量添加轴 (广播轴，broadcast axis)，使其 ndim 与大张量相同</li>
-<li>将小张量沿着广播轴重复，使其形状与大张量相同</li>
-</ol>
-<p><strong>张量积 (tensoor product) 或点积 (dot product)</strong></p>
-<ol>
-<li>向量-向量点积</li>
-</ol>
-<blockquote>
-<p>x &#x3D; np.random.random((32,))</p>
-<p>y &#x3D; np.random.random((32,))</p>
-<p>z &#x3D; np.dot(x, y)</p>
-<p>两个向量的点积是一个标量，只有元素个数相同的向量才能进行点积运算</p>
-</blockquote>
-<ol start="2">
-<li><p>矩阵-向量点积</p>
-<p>矩阵的第1维与向量的第0维必须相同，运算结果是一个向量，该向量的维数与矩阵第0维相同</p>
-<p>注意，只要两个张量中有一个的 ndim &gt; 1，则dot运算不对称，即 dot(x, y) !&#x3D; dot(y, x)</p>
-</li>
-<li><p>矩阵-矩阵点积</p>
-<p>对于矩阵x和y，当且仅当 x.shape[1] &#x3D;&#x3D; y.shape[0] 时，方可进行点积计算，点积结果为一形状为 (x.shape[0], y.shape[1])的矩阵，其元素是x的行与y的列之间的向量点积。</p>
-</li>
-<li><p>更高阶的张量点积运算</p>
-<blockquote>
-<p>(a, b, c, d) · (d,)  —-&gt;  (a, b, c)</p>
-<p>(a, b, c, d) · (d, e)  —-&gt;  (a, b, c, e)</p>
-</blockquote>
-</li>
-</ol>
-<p><strong>张量变形 (tensor reshaping)</strong></p>
-<ul>
-<li>转置 (transpose)</li>
-</ul>
-<p><strong>张量运算的几何解释</strong></p>
-<ul>
-<li>加法：将物体沿着某个方向**平移 (translation) **一段距离</li>
-<li>与矩阵 R &#x3D; [[cos (theta), -sin (theta)], [sin (theta), cos (theta)]] 点积：逆时针<strong>旋转 (rotation)</strong>  θ 角</li>
-<li>与矩阵 R &#x3D; [[horizontal_factor, 0], [0, vertical_factor]] 点积：在水平和垂直方向上进行<strong>缩放 (scaling)</strong></li>
-<li>与任意矩阵点积：<strong>线性变换 (linear transform)</strong></li>
-<li>一次点积与一次加法 (线性变换+平移)：<strong>仿射变换 (affine transform)</strong></li>
-</ul>
-
+<h2 id="张量-tensor"><a href="#张量-tensor" class="headerlink" title="张量 (tensor)"></a>张量 (tensor)</h2>
             
         </div>
     </div>
@@ -349,7 +219,7 @@
         
         <span class="tag">
             
-            <a href="/tags/%E5%BC%A0%E9%87%8F/" style="color: #00a596">张量</a>
+            <a href="/tags/%E5%BC%A0%E9%87%8F/" style="color: #00bcd4">张量</a>
         </span>
         
     </div>
@@ -383,35 +253,7 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h5><span id="1-标题的语法">1、标题的语法</span></h5><p>“# title” 即为标题的语法。需要注意的是，”#” 与 title 之间存在一个空格。# 的数量表征标题的层级，数量越多，标题的级别越低，字体也越小。</p>
-<h5><span id="2-正文部分">2、正文部分</span></h5><ol>
-<li><p>段落：使用空白行进行段落之间的分隔，不要使用 Tab 和 Space 控制缩进。</p>
-</li>
-<li><p>换行：一行末尾添加两个及以上空格，然后按回车键。  </p>
-</li>
-<li><p>强调：</p>
-<ol>
-<li>粗体——两个“星号”：My name is <strong>NFF</strong>.  </li>
-<li>斜体——一个“星号”：My name is <em>NFF</em>.</li>
-<li>同时——三个“星号”：My name is <em><strong>NFF</strong></em>.</li>
-</ol>
-</li>
-<li><p>块引用：</p>
-<blockquote>
-<p>在段落前添加 &gt; 可以创建块引用</p>
-<blockquote>
-<p>块引用可以嵌套使用</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>链接：[超链接显示名] (超链接地址 “超链接标题”)<br><a target="_blank" rel="noopener" href="https://markdown.com.cn/basic-syntax/" title="Markdown官方教程">本文参考自Markdown官方教程</a><br>使用&lt;&gt;可以使URL或email变成可点击的链接，如 <a target="_blank" rel="noopener" href="https://baidu.com/">https://baidu.com</a></p>
-</li>
-<li><p>添加图片：![图片alt] (图片链接 “图片标题”)<br> <img src="https://cdn.pixabay.com/photo/2023/09/20/19/47/stones-8265502_1280.jpg" alt="图片1" title="Stones Ocean"></p>
-</li>
-<li><p>转义字符：\</p>
-</li>
-</ol>
-
+            <h5 id="1、标题的语法"><a href="#1、标题的语法" class="headerlink" title="1、标题的语法"></a>1、标题的语法</h5>
             
         </div>
     </div>
@@ -425,7 +267,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Markdown/" style="color: #00a596">Markdown</a>
+            <a href="/tags/Markdown/" style="color: #03a9f4">Markdown</a>
         </span>
         
     </div>
@@ -459,16 +301,7 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1><span id="1-论文的三段式结构">1. 论文的三段式结构</span></h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/001.png"></p>
-<p>Introduction 论证研究目标的合理，以文献中的资料为论据。论述结构：从普遍到特定<br>Discussion &amp; Conclusion 论证研究目标的价值，主要以自己的研究工作为论据，也包括文献中的资料。论述结构：从特定到普遍</p>
-<h4><span id="注意">注意：</span></h4><p>引言段尽早写，可以早于实验和数据，因为它不依赖于实验和数据，又可以指导实验进行<br>引言和结论段的作用是说服读者阅读这篇文章</p>
-<h1><span id="2-引言的逻辑">2. 引言的逻辑</span></h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/002.png"></p>
-<h1><span id="3-研究选题的三种途径">3. 研究选题的三种途径</span></h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/003.png"></p>
-<h4><span id="好的课题">好的课题</span></h4><p>具体可行、适合现有资源条件<br>可证伪<br>激发创新</p>
-<h1><span id="4-确立研究目标的两个原则">4. 确立研究目标的两个原则</span></h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/004.png"></p>
-<h1><span id="5-文献综述的两个基本点">5. 文献综述的两个基本点</span></h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/005.png"></p>
-<h1><span id="6-阅读文献的两个阶段">6. 阅读文献的两个阶段</span></h1><p><img src="/2023/10/11/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E7%AF%87%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%8C%97%E7%BE%8E%E8%80%81%E5%88%98ResearchTIPS/006.png"></p>
-
+            <h1 id="1-论文的三段式结构"><a href="#1-论文的三段式结构" class="headerlink" title="1. 论文的三段式结构"></a>1. 论文的三段式结构</h1>
             
         </div>
     </div>
@@ -499,19 +332,6 @@
         <div class="content" v-pre>
             
             <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
             
         </div>
     </div>
